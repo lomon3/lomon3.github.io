@@ -9,7 +9,7 @@
     /* ====== Reset & theme ====== */
     *,*::before,*::after{box-sizing:border-box}
     html,body{height:100%}
-    body{margin:0; font:16px/1.65 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; letter-spacing:.2px}
+    body{margin:0; font:16px/1.65 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; letter-spacing:.2px; background:var(--bg); color:var(--text); overflow-x:hidden} html{background:var(--bg)}
     :root{
       --bg:#0b0c0f; --surface:#0f1219; --panel:#121623; --text:#e9eef6; --muted:#9ba7b8; --border:#1e2536; --chip:#161b28; --accent:#7ab8ff; --accent-2:#a6e3a1;
       --shadow: 0 8px 24px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02);
@@ -20,9 +20,9 @@
     }
 
     /* ====== Layout ====== */
-    .wrap{max-width:1040px;margin:0 auto;padding:32px 20px 80px;background:var(--bg);color:var(--text)}
-    header{display:grid;grid-template-columns:1fr auto;gap:16px 24px;align-items:start}
-    @media (max-width:860px){header{grid-template-columns:1fr}}
+    .wrap{max-width:1040px;margin:0 auto;padding:32px 20px 80px;overflow-x:hidden} 
+    header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 24px;align-items:start}
+    @media (max-width:1100px){header{grid-template-columns:1fr}}
 
     /* ====== Components ====== */
     .name{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:.3px;margin:0}
@@ -30,7 +30,7 @@
     .sub{margin-top:6px;color:var(--muted)}
     .btn{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
     .btn:hover{border-color:var(--accent)}
-    .actions{display:flex;gap:10px;align-items:center}
+    .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 
     .panel{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
     section{margin-top:26px}
@@ -71,12 +71,23 @@
     /* ====== Slider (for past jobs) ====== */
     .slider{position:relative;overflow:hidden}
     .track{display:flex;transition:transform .35s ease}
-    .slide{min-width:100%;padding:0 2px}
+    .slide{min-width:100%;padding:0} 
     .nav{display:flex;gap:8px;margin-top:10px}
     .nav .btn{padding:8px 12px}
 
     /* Print */
     @media print{.actions,.theme,.print-hide{display:none!important} body{background:#fff;color:#000} .panel,.job,.item{border-color:#ddd} a{color:#000;text-decoration:none}}
+      /* minor polish */
+    header::after{content:"";display:block;height:1px;margin-top:12px;background:linear-gradient(90deg,transparent,rgba(127,127,127,.25),transparent)}
+    #progress{pointer-events:none}
+      /* layout polish */
+    header > div{min-width:0}
+    .actions{justify-self:end}
+    #progress{position:fixed;top:0;left:0;right:0;height:3px;width:0;opacity:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 0 8px rgba(0,0,0,.2);z-index:2147483647;pointer-events:none}
+  /* Mobile overflow safety */
+    .wrap, header, section {overflow-x:hidden}
+    .grid, .panel, .job, .tags, .job .top {min-width:0}
+    .job ul {word-break:break-word}
   </style>
   <script type="application/ld+json">
   {
@@ -93,13 +104,15 @@
   </script>
 </head>
 <body data-theme="dark">
-  <div class="wrap">
+    <div class="wrap" data-lang="ru">
     <header>
       <div>
         <h1 class="name">Артём Чернушевич</h1>
-        <div class="title">Product Manager / Owner · SaaS · e‑commerce/marketplaces</div>
-        <div class="sub">Работаю в компании из топ‑10 продавцов на WB. Веду полный цикл <strong>CyberSeller</strong> — сервиса для работы с маркетплейсами (контент, цены, продвижение, аналитика, процессы).</div>
-        <div class="tags">
+        <div class="title ru">Product Manager / Owner · SaaS · e‑commerce/marketplaces</div>
+        <div class="title en" style="display:none">Product Manager / Owner · SaaS · e‑commerce/marketplaces</div>
+        <div class="sub ru">Работаю в компании из топ‑10 продавцов на WB. Веду полный цикл <strong>CyberSeller</strong> — сервиса для работы с маркетплейсами (контент, цены, продвижение, аналитика, процессы).</div>
+        <div class="sub en" style="display:none">Working at a Top‑10 Wildberries seller. I lead the full product lifecycle of <strong>CyberSeller</strong> — a marketplace operations platform (content, pricing, promotion, analytics, processes).</div>
+        <div class="tags ru">
           <span class="tag">Strategy & Roadmap</span>
           <span class="tag">Discovery · JTBD</span>
           <span class="tag">Retention · LTV · Churn</span>
@@ -111,24 +124,46 @@
           <span class="tag">AI (NLP/CV) · GenAI</span>
           <span class="tag">Python/SQL (баз.)</span>
         </div>
+        <div class="tags en" style="display:none">
+          <span class="tag">Strategy & Roadmap</span>
+          <span class="tag">Discovery · JTBD</span>
+          <span class="tag">Retention · LTV · Churn</span>
+          <span class="tag">A/B Tests · Growth</span>
+          <span class="tag">Segmentation · Personalization</span>
+          <span class="tag">Promotion/Ads Algorithms</span>
+          <span class="tag">Dynamic Pricing</span>
+          <span class="tag">DS/ML Collaboration</span>
+          <span class="tag">AI (NLP/CV) · GenAI</span>
+          <span class="tag">Python/SQL (basic)</span>
+        </div>
       </div>
       <div class="actions">
         <button class="btn" onclick="window.print()">Скачать PDF</button>
+        <button class="btn" id="langRu" aria-label="Русский">RU</button>
+        <button class="btn" id="langEn" aria-label="English">EN</button>
         <button class="btn" id="themeBtn" aria-label="Переключить тему">Тема: <span class="theme">Dark</span></button>
       </div>
     </header>
 
     <!-- ====== Summary ====== -->
     <section class="panel">
-      <div class="h1">Обо мне</div>
-      <p class="lead">
+      <div class="h1 ru">Обо мне</div>
+      <div class="h1 en" style="display:none">About</div>
+      <p class="lead ru">
         Product Owner, развиваю e‑commerce‑инновации у продавца из топ‑10 WB. 6+ лет экспертизы маркетплейсов (WB/Ozon). Создаю и развиваю <strong>CyberSeller</strong> — сервис для работы с маркетплейсами (от контента и цен до продвижения и аналитики). Перешёл из руководителя продаж, сфокусировался на <strong>процессной организации</strong> и <strong>data‑driven</strong> продуктовых решениях.
       </p>
-      <div class="callout">
+      <p class="lead en" style="display:none">
+        Product Owner driving e‑commerce innovation at a Top‑10 Wildberries seller. 6+ years of deep marketplace expertise (WB/Ozon). Building and leading <strong>CyberSeller</strong> — a platform for marketplace operations (content, pricing, promotion, analytics). Transitioned from sales leadership, focusing on <strong>process orchestration</strong> and <strong>data‑driven</strong> product work.
+      </p>
+      <div class="callout ru">
         Фокус: алгоритмы продвижения/рекламы на маркетплейсах, Dynamic Pricing, Intelligent Promotion, AI‑фичи (NLP/CV), KPI‑рамки (GMROI/ADROI).
       </div>
+      <div class="callout en" style="display:none">
+        Focus: Marketplace promotion/ads algorithms, Dynamic Pricing, Intelligent Promotion, AI features (NLP/CV), KPI frameworks (GMROI/ADROI).
+      </div>
       <div class="tags" style="margin-top:12px">
-        <span class="pill">Минск · удалённо (GMT+3) · открыт к релокации</span>
+        <span class="pill ru">Минск · удалённо (GMT+3) · открыт к релокации</span>
+        <span class="pill en" style="display:none">Minsk · remote (GMT+3) · open to relocation</span>
         <span class="pill"><a href="mailto:lomon3@gmail.com">lomon3@gmail.com</a></span>
         <span class="pill"><a href="tel:+375299380510">+375 (29) 938‑05‑10</a></span>
         <span class="pill"><a href="https://t.me/ArChernushevich" target="_blank">Telegram</a></span>
@@ -137,47 +172,70 @@
 
     <!-- ====== KPI ====== -->
     <section>
-      <h2>Ключевые результаты</h2>
+      <h2 class="ru">Ключевые результаты</h2>
+      <h2 class="en" style="display:none">Key Outcomes</h2>
       <div class="kpis g3 grid">
-        <div class="item"><div class="value">AI&nbsp;>70%</div><div class="label">покрытие коммуникаций (отзывы/вопросы/возвраты) системой</div></div>
-        <div class="item"><div class="value">Процесс → результат</div><div class="label">системно покрыт процесс отдела продаж: −50% среднее время реакции, высвобождение ≈15 ч/нед</div></div>
-        <div class="item"><div class="value">TTM −~70%</div><div class="label">ускорение вывода SKU (интегрированный медиа‑пайплайн)</div></div>
-        <div class="item"><div class="value">10 000+ SKU</div><div class="label">ежедневный мониторинг видимости и SEO‑индикаторов</div></div>
-        <div class="item"><div class="value">+150% ADROI</div><div class="label">целевое управление рекламой; ×4 рост числа кампаний</div></div>
-        <div class="item"><div class="value">~40%</div><div class="label">эффективность ценовых процессов (единая модель юнит‑экономики)</div></div>
+        <div class="item"><div class="value">AI&nbsp;>70%</div><div class="label ru">покрытие коммуникаций (отзывы/вопросы/возвраты) системой</div><div class="label en" style="display:none">AI coverage of customer comms (reviews/Q&A/returns) >70%</div></div>
+        <div class="item"><div class="value">Процесс → результат</div><div class="label ru">системно покрыт процесс отдела продаж: −50% среднее время реакции, высвобождено ≈15 ч/нед</div><div class="label en" style="display:none">Sales process systemized: −50% avg response time, ≈15 h/week freed</div></div>
+        <div class="item"><div class="value">TTM −~70%</div><div class="label ru">ускорение вывода SKU (интегрированный медиа‑пайплайн)</div><div class="label en" style="display:none">~70% faster TTM via integrated media pipeline</div></div>
+        <div class="item"><div class="value">10 000+ SKU</div><div class="label ru">ежедневный мониторинг видимости и SEO‑индикаторов</div><div class="label en" style="display:none">daily visibility & SEO tracking</div></div>
+        <div class="item"><div class="value">+150% ADROI</div><div class="label ru">целевое управление рекламой; ×4 рост числа кампаний</div><div class="label en" style="display:none">goal‑oriented ads; ×4 campaigns; +150% ADROI</div></div>
+        <div class="item"><div class="value">~40%</div><div class="label ru">эффективность ценовых процессов (единая модель юнит‑экономики)</div><div class="label en" style="display:none">~40% faster pricing workflows (unified unit‑economics)</div></div>
       </div>
     </section>
 
     <!-- ====== Projects ====== -->
     <section class="panel">
-      <div class="h1">Ключевые проекты</div>
-      <ul style="margin:6px 0 0 18px">
+      <div class="h1 ru">Ключевые проекты</div>
+      <div class="h1 en" style="display:none">Key Projects</div>
+      <ul class="ru" style="margin:6px 0 0 18px">
         <li><strong>CyberSeller — сервис для работы с маркетплейсами:</strong> контент, цены, продвижение, аналитика, процессы; полный продуктовый цикл.</li>
         <li><strong>РОП‑система (продукт‑система):</strong> процесс и этапы внутри сервиса, чтобы специалист проводил рабочий день end‑to‑end в одной системе.</li>
         <li><strong>Собственный бизнес на маркетплейсах:</strong> держу руку на пульсе практики, тестирую гипотезы и подходы.</li>
         <li><strong>Проект развития отдела продаж:</strong> система мотивации с учётом финансовых целей компании + менторинг для роста скиллов.</li>
+      </ul>
+      <ul class="en" style="display:none; margin:6px 0 0 18px">
+        <li><strong>CyberSeller — marketplace operations platform:</strong> content, pricing, promotion, analytics, processes; full product lifecycle.</li>
+        <li><strong>Sales‑Ops (RoP) System:</strong> process & stage orchestration so specialists spend their day end‑to‑end in one system.</li>
+        <li><strong>Own marketplace business:</strong> hands‑on practice to test hypotheses and approaches.</li>
+        <li><strong>Sales team growth program:</strong> motivation system aligned with company goals + mentoring.</li>
       </ul>
     </section>
 
     <!-- ====== Strengths ====== -->
     <section class="grid g2">
       <div class="panel">
-        <div class="h1">Что хочу и что умею</div>
-        <ul style="margin:6px 0 0 18px">
+        <div class="h1 ru">Что хочу и что умею</div>
+        <div class="h1 en" style="display:none">What I Want & Do Best</div>
+        <ul class="ru" style="margin:6px 0 0 18px">
           <li>Создавать и развивать сильные продукты: от 0→1 до масштабирования.</li>
           <li>Выстраивать процессы: discovery, приоритизация, планирование, релизы.</li>
           <li>Рост через данные: метрики, A/B‑тесты, когорты, ретеншн/LTV.</li>
           <li>Работать с DS/ML‑командами и инженерией, говорить на «одном языке».</li>
           <li>Руководить изменениями, держать прозрачный план и ответственность за результат.</li>
         </ul>
+        <ul class="en" style="display:none; margin:6px 0 0 18px">
+          <li>Build and scale impactful products (0→1→n).</li>
+          <li>Shape processes: discovery, prioritization, planning, releases.</li>
+          <li>Drive growth with data: metrics, A/B, cohorts, retention/LTV.</li>
+          <li>Work closely with DS/ML & engineering; speak the same language.</li>
+          <li>Lead change with clarity, transparency and ownership.</li>
+        </ul>
       </div>
       <div class="panel">
-        <div class="h1">Почему это сработает</div>
-        <ul style="margin:6px 0 0 18px">
+        <div class="h1 ru">Почему это сработает</div>
+        <div class="h1 en" style="display:none">Why It Works</div>
+        <ul class="ru" style="margin:6px 0 0 18px">
           <li>Глубокий опыт на маркетплейсах: знаю процессы end‑to‑end и учу лучших практик.</li>
           <li>Практичный AI и автоматизация там, где это даёт измеримый эффект.</li>
           <li>Простые решения для сложных систем: понятные интерфейсы, ясные метрики.</li>
           <li>Умею согласовывать интересы бизнеса и пользователей.</li>
+        </ul>
+        <ul class="en" style="display:none; margin:6px 0 0 18px">
+          <li>Deep marketplace expertise: end‑to‑end processes; training others.</li>
+          <li>Pragmatic AI & automation where it truly moves the needle.</li>
+          <li>Simple solutions for complex systems: clear UX, clear metrics.</li>
+          <li>Balance user value and business impact.</li>
         </ul>
       </div>
     </section>
@@ -235,39 +293,53 @@
 
     <!-- ====== Experience ====== -->
     <section>
-      <h2>Опыт</h2>
+      <h2 class="ru">Опыт</h2><h2 class="en" style="display:none">Experience</h2>
       <div class="xp">
         <article class="job">
           <div class="top">
             <div class="company">ООО «МПТрэйд»</div>
-            <div class="role">Product Manager / PO — сервис «CyberSeller»</div>
+            <div class="role ru">Product Manager / PO — сервис «CyberSeller»</div>
+            <div class="role en" style="display:none">Product Manager / PO — CyberSeller platform</div>
             <div class="period">Окт 2023 — н.в.</div>
           </div>
-          <ul>
+          <ul class="ru">
             <li>Полный цикл: discovery → roadmap → delivery → метрики (кросс‑функциональная команда 10+).</li>
             <li>Коммуникации (AI): покрытие >70% → системно закрываем процесс отдела продаж; −50% среднее время реакции.</li>
             <li>Медиа/контент: единый пайплайн + интегрированное редактирование → TTM −~70%, консистентный бренд.</li>
             <li>Ценообразование, SEO, продвижение: ежедневный мониторинг >10k SKU; +40% эффективность ценовых процессов; +150% ADROI (×4 кампании).</li>
             <li>RNP: прогнозирование спроса/сезонности и маржинальности; развитие алгоритмов продвижения/рекламы.</li>
           </ul>
+          <ul class="en" style="display:none">
+            <li>Own the full cycle: discovery → roadmap → delivery → metrics (10+ cross‑functional team).</li>
+            <li>Comms (AI): >70% coverage; standardized sales process; −50% avg response time.</li>
+            <li>Media/content: integrated pipeline & editing → ~70% faster TTM; consistent brand.</li>
+            <li>Pricing, SEO, promotion: daily tracking for >10k SKUs; ~40% faster pricing; +150% ADROI (×4 campaigns).</li>
+            <li>RNP: demand/seasonality & margin forecasting; ads/promo algorithms evolution.</li>
+          </ul>
         </article>
 
         <!-- Past jobs slider -->
         <div class="panel">
-          <div class="h1">Предыдущие места (кратко)</div>
+          <div class="h1 ru">Предыдущие места (кратко)</div><div class="h1 en" style="display:none">Previous Roles (brief)</div>
           <div class="slider" id="jobsSlider">
             <div class="track">
               <div class="slide">
                 <article class="job">
                   <div class="top">
                     <div class="company">ООО «МПТрэйд» (бренд WiMi)</div>
-                    <div class="role">Начальник отдела продаж → продуктовые инициативы</div>
+                    <div class="role ru">Начальник отдела продаж → продуктовые инициативы</div>
+                    <div class="role en" style="display:none">Head of Sales → product initiatives</div>
                     <div class="period">Апр 2022 — Окт 2023</div>
                   </div>
-                  <ul>
+                  <ul class="ru">
                     <li><strong>Задача:</strong> организовать работу отдела продаж и систематизировать процессы.</li>
-                    <li><strong>Вклад:</strong> внедрил регламенты, настроил отчётность и менторинг; прокачал скиллы продавцов.</li>
-                    <li><strong>Результат:</strong> системный подход и рост оборота; отдел успешно передан и стабильно работает до сих пор.</li>
+                    <li><strong>Вклад:</strong> регламенты, отчётность, менторинг; рост скиллов продавцов.</li>
+                    <li><strong>Результат:</strong> системный подход, рост оборота; отдел передан и стабильно работает.</li>
+                  </ul>
+                  <ul class="en" style="display:none">
+                    <li><strong>Goal:</strong> organize the sales department and systemize processes.</li>
+                    <li><strong>Contribution:</strong> playbooks, reporting, mentoring; skill uplift.</li>
+                    <li><strong>Result:</strong> scalable system, revenue growth; team handed over and running.</li>
                   </ul>
                 </article>
               </div>
@@ -275,13 +347,19 @@
                 <article class="job">
                   <div class="top">
                     <div class="company">ООО «Триовист» / 21vek</div>
-                    <div class="role">Руководитель проекта (e‑commerce operations)</div>
+                    <div class="role ru">Руководитель проекта (e‑commerce operations)</div>
+                    <div class="role en" style="display:none">Project Lead (e‑commerce operations)</div>
                     <div class="period">Май 2021 — Апр 2022</div>
                   </div>
-                  <ul>
+                  <ul class="ru">
                     <li><strong>Задача:</strong> вывести ассортимент на маркетплейсы СНГ и выстроить end‑to‑end процессы.</li>
                     <li><strong>Вклад:</strong> организовал цепочку от склада/1С и каталога до ценообразования и управления продажами.</li>
                     <li><strong>Результат:</strong> проект успешно передан и функционирует по сей день.</li>
+                  </ul>
+                  <ul class="en" style="display:none">
+                    <li><strong>Goal:</strong> launch to CIS marketplaces and build end‑to‑end ops.</li>
+                    <li><strong>Contribution:</strong> set up flow from warehouse/1C & catalog to pricing and sales ops.</li>
+                    <li><strong>Result:</strong> handed over successfully; project continues.</li>
                   </ul>
                 </article>
               </div>
@@ -289,13 +367,19 @@
                 <article class="job">
                   <div class="top">
                     <div class="company">ООО «Орликс»</div>
-                    <div class="role">Директор · Специалист по работе с клиентами</div>
+                    <div class="role ru">Директор · Специалист по работе с клиентами</div>
+                    <div class="role en" style="display:none">Director · Customer Operations</div>
                     <div class="period">Окт 2017 — Апр 2021</div>
                   </div>
-                  <ul>
+                  <ul class="ru">
                     <li><strong>Задача:</strong> управление бизнесом: оргвопросы, импорт, команда, выход на маркетплейсы.</li>
                     <li><strong>Вклад:</strong> инициировал присутствие на маркетплейсах, выстроил продажи и операционку.</li>
                     <li><strong>Результат:</strong> компания работает до сих пор и на 100% продаёт на маркетплейсах.</li>
+                  </ul>
+                  <ul class="en" style="display:none">
+                    <li><strong>Goal:</strong> run the business: org, import, team, marketplace entry.</li>
+                    <li><strong>Contribution:</strong> launched marketplace presence; built sales & ops.</li>
+                    <li><strong>Result:</strong> company still operates with 100% marketplace revenue.</li>
                   </ul>
                 </article>
               </div>
@@ -312,14 +396,14 @@
     <!-- ====== Education & Tools ====== -->
     <section class="grid g2">
       <div class="panel">
-        <h2>Образование</h2>
+        <h2 class="ru">Образование</h2><h2 class="en" style="display:none">Education</h2>
         <ul>
           <li>БГУ, ФРКТ — Физическая электроника, 2017.</li>
           <li>RS School — JS/FE Pre‑School, 2022.</li>
         </ul>
       </div>
       <div class="panel">
-        <h2>Инструменты</h2>
+        <h2 class="ru">Инструменты</h2><h2 class="en" style="display:none">Tools</h2>
         <div class="tags">
           <span class="tag">Jira/YouTrack/Trello</span>
           <span class="tag">Notion/Confluence</span>
@@ -341,7 +425,8 @@
     </section>
 
     <footer>
-      <div>Обновлено: 29 августа 2025</div>
+      <div class="ru">Обновлено: 29 августа 2025</div>
+      <div class="en" style="display:none">Updated: Aug 29, 2025</div>
       <div>© Артём Чернушевич</div>
     </footer>
   </div>
@@ -350,9 +435,25 @@
     // theme toggle
     const btn=document.getElementById('themeBtn');
     const themeEl=document.querySelector('.theme');
-    const root=document.body; const saved=localStorage.getItem('theme');
+    const root=document.documentElement; const saved=localStorage.getItem('theme');
     if(saved){root.setAttribute('data-theme',saved); if(themeEl) themeEl.textContent=saved==='dark'?'Dark':'Light';}
     btn&&btn.addEventListener('click',()=>{const now=root.getAttribute('data-theme')==='dark'?'light':'dark';root.setAttribute('data-theme',now); if(themeEl) themeEl.textContent=now==='dark'?'Dark':'Light';localStorage.setItem('theme',now)});
+
+    // language toggle
+    const wrap=document.querySelector('.wrap');
+    const ruBtns=document.querySelectorAll('#langRu, [data-lang-btn="ru"]');
+    const enBtns=document.querySelectorAll('#langEn, [data-lang-btn="en"]');
+    const applyLang=(lang)=>{
+      wrap.setAttribute('data-lang',lang);
+      document.querySelectorAll('.ru').forEach(el=>{el.style.display= lang==='ru' ? '' : 'none';});
+      document.querySelectorAll('.en').forEach(el=>{el.style.display= lang==='en' ? '' : 'none';});
+      localStorage.setItem('lang',lang);
+      document.documentElement.lang = lang === 'en' ? 'en' : 'ru';
+    };
+    const savedLang=localStorage.getItem('lang')||'ru';
+    applyLang(savedLang);
+    ruBtns.forEach(b=>b.addEventListener('click',()=>applyLang('ru')));
+    enBtns.forEach(b=>b.addEventListener('click',()=>applyLang('en')));
 
     // simple slider for past jobs
     (function(){
@@ -365,6 +466,37 @@
       const nav=slider.parentElement.querySelectorAll('.nav .btn');
       nav.forEach(b=>b.addEventListener('click',()=>{ const dir=Number(b.dataset.dir); i=(i+dir+slides.length)%slides.length; update(); }));
       window.addEventListener('resize',update); update();
+    })();
+
+    // scroll progress bar
+    (function(){
+      const id='progress';
+      let bar=document.getElementById(id);
+      if(!bar){
+        bar=document.createElement('div');
+        bar.id=id;
+        bar.style.position='fixed';
+        bar.style.top='0';
+        bar.style.left='0';
+        bar.style.height='3px';
+        bar.style.width='0';
+        bar.style.opacity='0';
+        bar.style.background='linear-gradient(90deg,var(--accent),var(--accent-2))';
+        bar.style.zIndex='2147483647';
+        bar.style.pointerEvents='none';
+        document.body.prepend(bar);
+      }
+      const update=()=>{
+        const max=document.documentElement.scrollHeight - window.innerHeight;
+        const y=window.pageYOffset || document.documentElement.scrollTop || 0;
+        if(max<=0){bar.style.opacity='0'; bar.style.width='0%'; return;}
+        const p=Math.min(1, Math.max(0, y/max));
+        bar.style.opacity='1';
+        bar.style.width=(p*100).toFixed(2)+'%';
+      };
+      window.addEventListener('scroll',update,{passive:true});
+      window.addEventListener('resize',update);
+      update();
     })();
   </script>
 </body>
