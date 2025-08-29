@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ru" itemscope itemtype="https://schema.org/Person">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Артём Чернушевич — Product Manager</title>
+  <meta name="description" content="Product Manager/Owner. SaaS, e‑commerce/marketplaces (WB/Ozon). Алгоритмы продвижения/рекламы, динамическое ценообразование, AI‑интеграции, A/B‑тесты, удержание/ретеншн, DS/ML‑процессы.">
+  <style>
+    /* ====== Reset & theme ====== */
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0; font:16px/1.65 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; letter-spacing:.2px}
+    :root{
+      --bg:#0b0c0f; --surface:#0f1219; --panel:#121623; --text:#e9eef6; --muted:#9ba7b8; --border:#1e2536; --chip:#161b28; --accent:#7ab8ff; --accent-2:#a6e3a1;
+      --shadow: 0 8px 24px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02);
+    }
+    [data-theme="light"]{
+      --bg:#f7f9fc; --surface:#ffffff; --panel:#ffffff; --text:#121623; --muted:#5a6472; --border:#e7edf6; --chip:#eef3ff; --accent:#2f6feb; --accent-2:#11875d;
+      --shadow: 0 8px 24px rgba(15,23,42,.08), inset 0 1px 0 rgba(255,255,255,.4);
+    }
+
+    /* ====== Layout ====== */
+    .wrap{max-width:1040px;margin:0 auto;padding:32px 20px 80px;background:var(--bg);color:var(--text)}
+    header{display:grid;grid-template-columns:1fr auto;gap:16px 24px;align-items:start}
+    @media (max-width:860px){header{grid-template-columns:1fr}}
+
+    /* ====== Components ====== */
+    .name{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:.3px;margin:0}
+    .title{margin-top:6px;color:var(--muted);font-weight:600}
+    .sub{margin-top:6px;color:var(--muted)}
+    .btn{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;box-shadow:var(--shadow)}
+    .btn:hover{border-color:var(--accent)}
+    .actions{display:flex;gap:10px;align-items:center}
+
+    .panel{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
+    section{margin-top:26px}
+    h2{margin:0 0 12px; font-size:13px; text-transform:uppercase; letter-spacing:.35px; color:var(--muted)}
+    .h1{font-size:18px;font-weight:800;margin:0 0 6px}
+    .lead{font-size:16px}
+
+    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+    .tag{background:var(--chip);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:13px}
+
+    .grid{display:grid;gap:16px}
+    .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    @media (max-width:900px){.g3{grid-template-columns:1fr}}
+    @media (max-width:720px){.g2{grid-template-columns:1fr}}
+
+    .kpis{display:grid;gap:12px}
+    .kpis .item{display:grid;gap:4px;padding:16px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
+    .kpis .value{font-weight:900;font-size:20px}
+    .kpis .label{color:var(--muted);font-size:13px}
+
+    .xp{display:grid;gap:14px}
+    .job{display:grid;gap:8px;padding:16px;border:1px solid var(--border);border-radius:16px;background:var(--surface)}
+    .job .top{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:baseline}
+    .company{font-weight:800}
+    .role{color:var(--muted)}
+    .period{margin-left:auto;color:var(--muted);font-size:14px}
+    .job ul{margin:6px 0 0 18px}
+
+    .bullet{display:flex;gap:10px;align-items:flex-start}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:8px;flex:0 0 auto}
+
+    .callout{border-left:3px solid var(--accent);padding:8px 12px;background:var(--surface);border-radius:10px}
+    .pill{padding:2px 8px;border-radius:8px;border:1px solid var(--border);font-size:12px;color:var(--muted)}
+
+    footer{margin-top:40px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;font-size:14px}
+
+    /* ====== Slider (for past jobs) ====== */
+    .slider{position:relative;overflow:hidden}
+    .track{display:flex;transition:transform .35s ease}
+    .slide{min-width:100%;padding:0 2px}
+    .nav{display:flex;gap:8px;margin-top:10px}
+    .nav .btn{padding:8px 12px}
+
+    /* Print */
+    @media print{.actions,.theme,.print-hide{display:none!important} body{background:#fff;color:#000} .panel,.job,.item{border-color:#ddd} a{color:#000;text-decoration:none}}
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Артём Чернушевич",
+    "jobTitle":"Product Manager / Owner",
+    "email":"mailto:lomon3@gmail.com",
+    "telephone":"+375299380510",
+    "address":{"@type":"PostalAddress","addressLocality":"Минск"},
+    "knowsAbout":["Product Management","SaaS","Marketplaces","Retention","A/B testing","Pricing","AI","DS/ML","BPMN"],
+    "sameAs":["https://t.me/ArChernushevich"]
+  }
+  </script>
+</head>
+<body data-theme="dark">
+  <div class="wrap">
+    <header>
+      <div>
+        <h1 class="name">Артём Чернушевич</h1>
+        <div class="title">Product Manager / Owner · SaaS · e‑commerce/marketplaces</div>
+        <div class="sub">Работаю в компании из топ‑10 продавцов на WB. Веду полный цикл <strong>CyberSeller</strong> — сервиса для работы с маркетплейсами (контент, цены, продвижение, аналитика, процессы).</div>
+        <div class="tags">
+          <span class="tag">Strategy & Roadmap</span>
+          <span class="tag">Discovery · JTBD</span>
+          <span class="tag">Retention · LTV · Churn</span>
+          <span class="tag">A/B Tests · Growth</span>
+          <span class="tag">Segmentation · Personalization</span>
+          <span class="tag">Алгоритмы продвижения/рекламы</span>
+          <span class="tag">Dynamic Pricing</span>
+          <span class="tag">DS/ML Collaboration</span>
+          <span class="tag">AI (NLP/CV) · GenAI</span>
+          <span class="tag">Python/SQL (баз.)</span>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" onclick="window.print()">Скачать PDF</button>
+        <button class="btn" id="themeBtn" aria-label="Переключить тему">Тема: <span class="theme">Dark</span></button>
+      </div>
+    </header>
+
+    <!-- ====== Summary ====== -->
+    <section class="panel">
+      <div class="h1">Обо мне</div>
+      <p class="lead">
+        Product Owner, развиваю e‑commerce‑инновации у продавца из топ‑10 WB. 6+ лет экспертизы маркетплейсов (WB/Ozon). Создаю и развиваю <strong>CyberSeller</strong> — сервис для работы с маркетплейсами (от контента и цен до продвижения и аналитики). Перешёл из руководителя продаж, сфокусировался на <strong>процессной организации</strong> и <strong>data‑driven</strong> продуктовых решениях.
+      </p>
+      <div class="callout">
+        Фокус: алгоритмы продвижения/рекламы на маркетплейсах, Dynamic Pricing, Intelligent Promotion, AI‑фичи (NLP/CV), KPI‑рамки (GMROI/ADROI).
+      </div>
+      <div class="tags" style="margin-top:12px">
+        <span class="pill">Минск · удалённо (GMT+3) · открыт к релокации</span>
+        <span class="pill"><a href="mailto:lomon3@gmail.com">lomon3@gmail.com</a></span>
+        <span class="pill"><a href="tel:+375299380510">+375 (29) 938‑05‑10</a></span>
+        <span class="pill"><a href="https://t.me/ArChernushevich" target="_blank">Telegram</a></span>
+      </div>
+    </section>
+
+    <!-- ====== KPI ====== -->
+    <section>
+      <h2>Ключевые результаты</h2>
+      <div class="kpis g3 grid">
+        <div class="item"><div class="value">AI&nbsp;>70%</div><div class="label">покрытие коммуникаций (отзывы/вопросы/возвраты) системой</div></div>
+        <div class="item"><div class="value">Процесс → результат</div><div class="label">системно покрыт процесс отдела продаж: −50% среднее время реакции, высвобождение ≈15 ч/нед</div></div>
+        <div class="item"><div class="value">TTM −~70%</div><div class="label">ускорение вывода SKU (интегрированный медиа‑пайплайн)</div></div>
+        <div class="item"><div class="value">10 000+ SKU</div><div class="label">ежедневный мониторинг видимости и SEO‑индикаторов</div></div>
+        <div class="item"><div class="value">+150% ADROI</div><div class="label">целевое управление рекламой; ×4 рост числа кампаний</div></div>
+        <div class="item"><div class="value">~40%</div><div class="label">эффективность ценовых процессов (единая модель юнит‑экономики)</div></div>
+      </div>
+    </section>
+
+    <!-- ====== Projects ====== -->
+    <section class="panel">
+      <div class="h1">Ключевые проекты</div>
+      <ul style="margin:6px 0 0 18px">
+        <li><strong>CyberSeller — сервис для работы с маркетплейсами:</strong> контент, цены, продвижение, аналитика, процессы; полный продуктовый цикл.</li>
+        <li><strong>РОП‑система (продукт‑система):</strong> процесс и этапы внутри сервиса, чтобы специалист проводил рабочий день end‑to‑end в одной системе.</li>
+        <li><strong>Собственный бизнес на маркетплейсах:</strong> держу руку на пульсе практики, тестирую гипотезы и подходы.</li>
+        <li><strong>Проект развития отдела продаж:</strong> система мотивации с учётом финансовых целей компании + менторинг для роста скиллов.</li>
+      </ul>
+    </section>
+
+    <!-- ====== Strengths ====== -->
+    <section class="grid g2">
+      <div class="panel">
+        <div class="h1">Что хочу и что умею</div>
+        <ul style="margin:6px 0 0 18px">
+          <li>Создавать и развивать сильные продукты: от 0→1 до масштабирования.</li>
+          <li>Выстраивать процессы: discovery, приоритизация, планирование, релизы.</li>
+          <li>Рост через данные: метрики, A/B‑тесты, когорты, ретеншн/LTV.</li>
+          <li>Работать с DS/ML‑командами и инженерией, говорить на «одном языке».</li>
+          <li>Руководить изменениями, держать прозрачный план и ответственность за результат.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <div class="h1">Почему это сработает</div>
+        <ul style="margin:6px 0 0 18px">
+          <li>Глубокий опыт на маркетплейсах: знаю процессы end‑to‑end и учу лучших практик.</li>
+          <li>Практичный AI и автоматизация там, где это даёт измеримый эффект.</li>
+          <li>Простые решения для сложных систем: понятные интерфейсы, ясные метрики.</li>
+          <li>Умею согласовывать интересы бизнеса и пользователей.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ====== Skills ====== -->
+    <section class="grid g2">
+      <div class="panel">
+        <h2>Product</h2>
+        <div class="tags">
+          <span class="tag">Vision · Strategy · Roadmap</span>
+          <span class="tag">Discovery · CustDev · JTBD</span>
+          <span class="tag">Prioritization (RICE/ICE)</span>
+          <span class="tag">GTM · Monetization</span>
+          <span class="tag">A/B · Hypothesis → Metric</span>
+          <span class="tag">NSM · AARRR · Cohorts</span>
+          <span class="tag">Retention · LTV · Churn</span>
+          <span class="tag">Stakeholders · Hiring</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Tech & Data</h2>
+        <div class="tags">
+          <span class="tag">Python (pandas, scripts)</span>
+          <span class="tag">SQL (базовый)</span>
+          <span class="tag">REST API · интеграции</span>
+          <span class="tag">LLM/NLP · CV · GenAI</span>
+          <span class="tag">Google Sheets/Excel</span>
+          <span class="tag">Figma/Photoshop/Premiere Pro</span>
+          <span class="tag">BPMN · 1С (баз.)</span>
+          <span class="tag">Jira · YouTrack · Miro</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Домен: маркетплейсы / e‑commerce</h2>
+        <div class="tags">
+          <span class="tag">WB · Ozon · Lamoda · YM</span>
+          <span class="tag">SEO/индексация карточек</span>
+          <span class="tag">Контент‑пайплайн/Медиа</span>
+          <span class="tag">Реклама · ROAS/ROMI/ADROI</span>
+          <span class="tag">Ассортимент · планирование</span>
+          <span class="tag">Dynamic Pricing</span>
+          <span class="tag">Практика: продавец и внутренние инструменты</span>
+          <span class="tag">Менторинг/обучение методологиям</span>
+        </div>
+      </div>
+      <div class="panel">
+        <h2>Языки</h2>
+        <div class="tags">
+          <span class="tag">Русский — C1</span>
+          <span class="tag">Белорусский — родной</span>
+          <span class="tag">English — B1</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Experience ====== -->
+    <section>
+      <h2>Опыт</h2>
+      <div class="xp">
+        <article class="job">
+          <div class="top">
+            <div class="company">ООО «МПТрэйд»</div>
+            <div class="role">Product Manager / PO — сервис «CyberSeller»</div>
+            <div class="period">Окт 2023 — н.в.</div>
+          </div>
+          <ul>
+            <li>Полный цикл: discovery → roadmap → delivery → метрики (кросс‑функциональная команда 10+).</li>
+            <li>Коммуникации (AI): покрытие >70% → системно закрываем процесс отдела продаж; −50% среднее время реакции.</li>
+            <li>Медиа/контент: единый пайплайн + интегрированное редактирование → TTM −~70%, консистентный бренд.</li>
+            <li>Ценообразование, SEO, продвижение: ежедневный мониторинг >10k SKU; +40% эффективность ценовых процессов; +150% ADROI (×4 кампании).</li>
+            <li>RNP: прогнозирование спроса/сезонности и маржинальности; развитие алгоритмов продвижения/рекламы.</li>
+          </ul>
+        </article>
+
+        <!-- Past jobs slider -->
+        <div class="panel">
+          <div class="h1">Предыдущие места (кратко)</div>
+          <div class="slider" id="jobsSlider">
+            <div class="track">
+              <div class="slide">
+                <article class="job">
+                  <div class="top">
+                    <div class="company">ООО «МПТрэйд» (бренд WiMi)</div>
+                    <div class="role">Начальник отдела продаж → продуктовые инициативы</div>
+                    <div class="period">Апр 2022 — Окт 2023</div>
+                  </div>
+                  <ul>
+                    <li><strong>Задача:</strong> организовать работу отдела продаж и систематизировать процессы.</li>
+                    <li><strong>Вклад:</strong> внедрил регламенты, настроил отчётность и менторинг; прокачал скиллы продавцов.</li>
+                    <li><strong>Результат:</strong> системный подход и рост оборота; отдел успешно передан и стабильно работает до сих пор.</li>
+                  </ul>
+                </article>
+              </div>
+              <div class="slide">
+                <article class="job">
+                  <div class="top">
+                    <div class="company">ООО «Триовист» / 21vek</div>
+                    <div class="role">Руководитель проекта (e‑commerce operations)</div>
+                    <div class="period">Май 2021 — Апр 2022</div>
+                  </div>
+                  <ul>
+                    <li><strong>Задача:</strong> вывести ассортимент на маркетплейсы СНГ и выстроить end‑to‑end процессы.</li>
+                    <li><strong>Вклад:</strong> организовал цепочку от склада/1С и каталога до ценообразования и управления продажами.</li>
+                    <li><strong>Результат:</strong> проект успешно передан и функционирует по сей день.</li>
+                  </ul>
+                </article>
+              </div>
+              <div class="slide">
+                <article class="job">
+                  <div class="top">
+                    <div class="company">ООО «Орликс»</div>
+                    <div class="role">Директор · Специалист по работе с клиентами</div>
+                    <div class="period">Окт 2017 — Апр 2021</div>
+                  </div>
+                  <ul>
+                    <li><strong>Задача:</strong> управление бизнесом: оргвопросы, импорт, команда, выход на маркетплейсы.</li>
+                    <li><strong>Вклад:</strong> инициировал присутствие на маркетплейсах, выстроил продажи и операционку.</li>
+                    <li><strong>Результат:</strong> компания работает до сих пор и на 100% продаёт на маркетплейсах.</li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+          </div>
+          <div class="nav">
+            <button class="btn" data-dir="-1">←</button>
+            <button class="btn" data-dir="1">→</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== Education & Tools ====== -->
+    <section class="grid g2">
+      <div class="panel">
+        <h2>Образование</h2>
+        <ul>
+          <li>БГУ, ФРКТ — Физическая электроника, 2017.</li>
+          <li>RS School — JS/FE Pre‑School, 2022.</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h2>Инструменты</h2>
+        <div class="tags">
+          <span class="tag">Jira/YouTrack/Trello</span>
+          <span class="tag">Notion/Confluence</span>
+          <span class="tag">Miro/FigJam</span>
+          <span class="tag">Figma</span>
+          <span class="tag">GitHub</span>
+          <span class="tag">Google Workspace</span>
+          <span class="tag">Google Apps Script</span>
+          <span class="tag">Postman</span>
+          <span class="tag">Bitrix24 (автоматизация процессов)</span>
+          <span class="tag">Яндекс Трекер</span>
+          <span class="tag">Яндекс Вики</span>
+          <span class="tag">Photoshop</span>
+          <span class="tag">Premiere Pro</span>
+          <span class="tag">Xmind</span>
+          <span class="tag">1С</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div>Обновлено: 29 августа 2025</div>
+      <div>© Артём Чернушевич</div>
+    </footer>
+  </div>
+
+  <script>
+    // theme toggle
+    const btn=document.getElementById('themeBtn');
+    const themeEl=document.querySelector('.theme');
+    const root=document.body; const saved=localStorage.getItem('theme');
+    if(saved){root.setAttribute('data-theme',saved); if(themeEl) themeEl.textContent=saved==='dark'?'Dark':'Light';}
+    btn&&btn.addEventListener('click',()=>{const now=root.getAttribute('data-theme')==='dark'?'light':'dark';root.setAttribute('data-theme',now); if(themeEl) themeEl.textContent=now==='dark'?'Dark':'Light';localStorage.setItem('theme',now)});
+
+    // simple slider for past jobs
+    (function(){
+      const slider=document.getElementById('jobsSlider');
+      if(!slider) return;
+      const track=slider.querySelector('.track');
+      const slides=[...slider.querySelectorAll('.slide')];
+      let i=0;
+      const update=()=>{ track.style.transform=`translateX(${-i*100}%)`; };
+      const nav=slider.parentElement.querySelectorAll('.nav .btn');
+      nav.forEach(b=>b.addEventListener('click',()=>{ const dir=Number(b.dataset.dir); i=(i+dir+slides.length)%slides.length; update(); }));
+      window.addEventListener('resize',update); update();
+    })();
+  </script>
+</body>
+</html>
