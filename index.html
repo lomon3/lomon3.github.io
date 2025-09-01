@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html lang="ru" itemscope itemtype="[https://schema.org/Person](https://schema.org/Person)">
+<!DOCTYPE html>
+<html lang="ru" itemscope itemtype="https://schema.org/Person">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Артём Чернушевич — Product Manager</title>
   <meta name="description" content="Product Manager/Owner. SaaS, e‑commerce/marketplaces (WB/Ozon). Алгоритмы продвижения/рекламы, динамическое ценообразование, AI‑интеграции, A/B‑тесты, удержание/ретеншн, DS/ML‑процессы.">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
     /* ====== Reset & theme ====== */
     *,*::before,*::after{box-sizing:border-box}
@@ -17,7 +19,7 @@
     /* ====== Layout ====== */
     .wrap{max-width:1040px;margin:0 auto;padding:32px 20px 80px;overflow-x:hidden}
     header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 24px;align-items:start}
-    @media (max-width:1100px){header{grid-template-columns:1fr}}
+    @media (max-width:720px){header{grid-template-columns:1fr;}}
 
     /* ====== Components ====== */
     .name{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:.3px;margin:0}
@@ -26,11 +28,12 @@
     .btn{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;box-shadow:var(--shadow); transition: border-color 0.2s;}
     .btn:hover{border-color:var(--accent)}
     .btn.active{border-color:var(--accent); background:var(--chip);}
-    .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-self:end}
+    .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
 
     .panel{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
     section{margin-top:26px}
-    h2{margin:0 0 12px; font-size:13px; text-transform:uppercase; letter-spacing:.35px; color:var(--muted)}
+    h2{margin:0 0 12px; font-size:13px; text-transform:uppercase; letter-spacing:.35px; color:var(--muted); display: flex; align-items: center;}
+    h2 .fa-fw{width: 1.25em; color: var(--muted); margin-right: 8px;}
     .h1{font-size:18px;font-weight:800;margin:0 0 6px}
     .lead{font-size:16px}
 
@@ -75,7 +78,15 @@
     .aside{display:grid;gap:12px;justify-items:end}
     .avatar{width:clamp(160px,22vw,280px);aspect-ratio:4/5;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);background:var(--surface)}
     .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-    @media (max-width:720px){.aside{justify-items:start}.avatar{width:clamp(120px,50vw,220px);aspect-ratio:4/5}}
+    
+    /* MOBILE ADAPTATIONS */
+    @media (max-width:720px){
+      .aside{justify-items:start; order: -1; margin-bottom: 16px;} /* Move avatar block to top */
+      .avatar{width:clamp(120px,50vw,220px);aspect-ratio:4/5}
+      .actions{justify-self: start;}
+      .job .top {gap: 4px 14px;}
+      .period {margin-left: 0; white-space: normal; flex-basis: 100%;} /* Fix horizontal scroll */
+    }
 
     /* Print */
     @media print{.actions,.theme,.print-hide{display:none!important} body{background:#fff!important;color:#000!important} :root[data-theme="dark"]{--bg:#fff; --surface:#fff; --panel:#fff; --text:#000; --muted:#555; --border:#ddd; --chip:#eee; --accent:#000; --accent-2:#000;} .panel,.job,.item{border-color:#ddd} a{color:#000;text-decoration:none}}
@@ -87,7 +98,7 @@
     .job ul {word-break:break-word}
   </style>
   <script type="application/ld+json">
-  { "@context":"[https://schema.org](https://schema.org)", "@type":"Person", "name":"Артём Чернушевич", "jobTitle":"Product Manager / Owner", "email":"mailto:lomon3@gmail.com", "telephone":"+375299380510", "address":{"@type":"PostalAddress","addressLocality":"Минск"}, "knowsAbout":["Product Management","SaaS","Marketplaces","Retention","A/B testing","Pricing","AI","DS/ML","BPMN"], "sameAs":["[https://t.me/ArChernushevich](https://t.me/ArChernushevich)"] }
+  { "@context":"https://schema.org", "@type":"Person", "name":"Артём Чернушевич", "jobTitle":"Product Manager / Owner", "email":"mailto:lomon3@gmail.com", "telephone":"+375299380510", "address":{"@type":"PostalAddress","addressLocality":"Минск"}, "knowsAbout":["Product Management","SaaS","Marketplaces","Retention","A/B testing","Pricing","AI","DS/ML","BPMN"], "sameAs":["https://t.me/ArChernushevich"] }
   </script>
 </head>
 <body data-theme="dark">
@@ -138,8 +149,8 @@
 
     <!-- ====== Summary ====== -->
     <section class="panel">
-      <div class="h1 ru">Обо мне</div>
-      <div class="h1 en" style="display:none">About</div>
+      <h2 class="ru"><i class="fa-solid fa-user-tie fa-fw"></i>Обо мне</h2>
+      <h2 class="en" style="display:none"><i class="fa-solid fa-user-tie fa-fw"></i>About</h2>
       <p class="lead ru">Product Owner, развиваю e‑commerce‑инновации у продавца из топ‑10 WB. 6+ лет экспертизы маркетплейсов (WB/Ozon). Создаю и развиваю <strong>CyberSeller</strong> — сервис для работы с маркетплейсами (от контента и цен до продвижения и аналитики). Перешёл из руководителя продаж, сфокусировался на <strong>процессной организации</strong> и <strong>data‑driven</strong> продуктовых решениях.</p>
       <p class="lead en" style="display:none">Product Owner driving e‑commerce innovation at a Top‑10 Wildberries seller. 6+ years of deep marketplace expertise (WB/Ozon). Building and leading <strong>CyberSeller</strong> — a platform for marketplace operations (content, pricing, promotion, analytics). Transitioned from sales leadership, focusing on <strong>process orchestration</strong> and <strong>data‑driven</strong> product work.</p>
       <div class="callout ru">Фокус: алгоритмы продвижения/рекламы на маркетплейсах, Dynamic Pricing, Intelligent Promotion, AI‑фичи (NLP/CV), KPI‑рамки (GMROI/ADROI).</div>
@@ -149,14 +160,14 @@
         <span class="pill en" style="display:none">Minsk · remote (GMT+3) · open to relocation</span>
         <span class="pill"><a href="mailto:lomon3@gmail.com">lomon3@gmail.com</a></span>
         <span class="pill"><a href="tel:+375299380510">+375 (29) 938‑05‑10</a></span>
-        <span class="pill"><a href="[https://t.me/ArChernushevich](https://t.me/ArChernushevich)" target="_blank">Telegram</a></span>
+        <span class="pill"><a href="https://t.me/ArChernushevich" target="_blank">Telegram</a></span>
       </div>
     </section>
 
     <!-- ====== KPI ====== -->
     <section>
-      <h2 class="ru">Ключевые результаты</h2>
-      <h2 class="en" style="display:none">Key Outcomes</h2>
+      <h2 class="ru"><i class="fa-solid fa-chart-line fa-fw"></i>Ключевые результаты</h2>
+      <h2 class="en" style="display:none"><i class="fa-solid fa-chart-line fa-fw"></i>Key Outcomes</h2>
       <div class="kpis g3 grid">
         <div class="item"><div class="value">AI&nbsp;&gt;70%</div><div class="label ru">покрытие коммуникаций (отзывы/вопросы/возвраты) системой</div><div class="label en" style="display:none">AI coverage of customer comms (reviews/Q&A/returns) &gt;70%</div></div>
         <div class="item"><div class="value">Процесс → результат</div><div class="label ru">системно покрыт процесс отдела продаж: −50% среднее время реакции, высвобождено ≈15 ч/нед</div><div class="label en" style="display:none">Sales process systemized: −50% avg response time, ≈15 h/week freed</div></div>
@@ -169,8 +180,8 @@
 
     <!-- ====== Projects ====== -->
     <section class="panel">
-      <div class="h1 ru">Ключевые проекты</div>
-      <div class="h1 en" style="display:none">Key Projects</div>
+      <h2 class="ru"><i class="fa-solid fa-rocket fa-fw"></i>Ключевые проекты</h2>
+      <h2 class="en" style="display:none"><i class="fa-solid fa-rocket fa-fw"></i>Key Projects</h2>
       <ul class="ru" style="margin:6px 0 0 18px">
         <li><strong>CyberSeller — сервис для работы с маркетплейсами:</strong> контент, цены, продвижение, аналитика, процессы; полный продуктовый цикл.</li>
         <li><strong>РОП‑система (продукт‑система):</strong> процесс и этапы внутри сервиса, чтобы специалист проводил рабочий день end‑to‑end в одной системе.</li>
@@ -188,8 +199,8 @@
     <!-- ====== Strengths ====== -->
     <section class="grid g2">
       <div class="panel">
-        <div class="h1 ru">Что хочу и что умею</div>
-        <div class="h1 en" style="display:none">What I Want & Do Best</div>
+        <h2 class="ru"><i class="fa-solid fa-bullseye fa-fw"></i>Что хочу и что умею</h2>
+        <h2 class="en" style="display:none"><i class="fa-solid fa-bullseye fa-fw"></i>What I Want & Do Best</h2>
         <ul class="ru" style="margin:6px 0 0 18px">
           <li>Создавать и развивать сильные продукты: от 0→1 до масштабирования.</li>
           <li>Выстраивать процессы: discovery, приоритизация, планирование, релизы.</li>
@@ -206,8 +217,8 @@
         </ul>
       </div>
       <div class="panel">
-        <div class="h1 ru">Почему это сработает</div>
-        <div class="h1 en" style="display:none">Why It Works</div>
+        <h2 class="ru"><i class="fa-solid fa-check-double fa-fw"></i>Почему это сработает</h2>
+        <h2 class="en" style="display:none"><i class="fa-solid fa-check-double fa-fw"></i>Why It Works</h2>
         <ul class="ru" style="margin:6px 0 0 18px">
           <li>Глубокий опыт на маркетплейсах: знаю процессы end‑to‑end и учу лучших практик.</li>
           <li>Практичный AI и автоматизация там, где это даёт измеримый эффект.</li>
@@ -226,7 +237,7 @@
     <!-- ====== Skills ====== -->
     <section class="grid g2">
       <div class="panel">
-        <h2 class="ru">Продукт</h2><h2 class="en" style="display:none">Product</h2>
+        <h2 class="ru"><i class="fa-solid fa-lightbulb fa-fw"></i>Продукт</h2><h2 class="en" style="display:none"><i class="fa-solid fa-lightbulb fa-fw"></i>Product</h2>
         <div class="tags">
           <span class="tag">Vision · Strategy · Roadmap</span>
           <span class="tag">Discovery · CustDev · JTBD</span>
@@ -239,7 +250,7 @@
         </div>
       </div>
       <div class="panel">
-        <h2 class="ru">Технологии и Данные</h2><h2 class="en" style="display:none">Tech & Data</h2>
+        <h2 class="ru"><i class="fa-solid fa-code fa-fw"></i>Технологии и Данные</h2><h2 class="en" style="display:none"><i class="fa-solid fa-code fa-fw"></i>Tech & Data</h2>
         <div class="tags">
           <span class="tag">Python (pandas, scripts)</span>
           <span class="tag">SQL (базовый)</span>
@@ -252,7 +263,7 @@
         </div>
       </div>
       <div class="panel">
-        <h2 class="ru">Домен: маркетплейсы / e‑commerce</h2><h2 class="en" style="display:none">Domain: Marketplaces / e‑commerce</h2>
+        <h2 class="ru"><i class="fa-solid fa-store fa-fw"></i>Домен: маркетплейсы / e‑commerce</h2><h2 class="en" style="display:none"><i class="fa-solid fa-store fa-fw"></i>Domain: Marketplaces / e‑commerce</h2>
         <div class="tags ru">
           <span class="tag">WB · Ozon · Lamoda · YM</span>
           <span class="tag">SEO/индексация карточек</span>
@@ -275,7 +286,7 @@
         </div>
       </div>
       <div class="panel">
-        <h2 class="ru">Языки</h2><h2 class="en" style="display:none">Languages</h2>
+        <h2 class="ru"><i class="fa-solid fa-language fa-fw"></i>Языки</h2><h2 class="en" style="display:none"><i class="fa-solid fa-language fa-fw"></i>Languages</h2>
         <div class="tags ru">
           <span class="tag">Русский — C1</span>
           <span class="tag">Белорусский — родной</span>
@@ -291,7 +302,7 @@
 
     <!-- ====== Experience ====== -->
     <section>
-      <h2 class="ru">Опыт</h2><h2 class="en" style="display:none">Experience</h2>
+      <h2 class="ru"><i class="fa-solid fa-briefcase fa-fw"></i>Опыт</h2><h2 class="en" style="display:none"><i class="fa-solid fa-briefcase fa-fw"></i>Experience</h2>
       <div class="xp">
         <article class="job">
           <div class="top">
@@ -395,7 +406,7 @@
     <!-- ====== Education & Tools ====== -->
     <section class="grid g2">
       <div class="panel">
-        <h2 class="ru">Образование</h2><h2 class="en" style="display:none">Education</h2>
+        <h2 class="ru"><i class="fa-solid fa-graduation-cap fa-fw"></i>Образование</h2><h2 class="en" style="display:none"><i class="fa-solid fa-graduation-cap fa-fw"></i>Education</h2>
         <ul class="ru">
           <li>БГУ, ФРКТ — Физическая электроника, 2017.</li>
           <li>RS School — JS/FE Pre‑School, 2022.</li>
@@ -406,7 +417,7 @@
         </ul>
       </div>
       <div class="panel">
-        <h2 class="ru">Инструменты</h2><h2 class="en" style="display:none">Tools</h2>
+        <h2 class="ru"><i class="fa-solid fa-toolbox fa-fw"></i>Инструменты</h2><h2 class="en" style="display:none"><i class="fa-solid fa-toolbox fa-fw"></i>Tools</h2>
         <div class="tags">
           <span class="tag">Jira/YouTrack/Trello</span>
           <span class="tag">Notion/Confluence</span>
