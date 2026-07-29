@@ -427,7 +427,7 @@ body[data-lang="en"] .lang-en {
 .portrait-wrap {
   position: relative;
   overflow: hidden;
-  aspect-ratio: 633 / 611;
+  aspect-ratio: 1 / 1.03;
   border: 1px solid var(--line-strong);
   border-radius: 30px;
   background: var(--surface);
@@ -447,8 +447,10 @@ body[data-lang="en"] .lang-en {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: 50% 12%;
   filter: saturate(0.92) contrast(1.02);
+  transform: scale(1.1);
+  transform-origin: 50% 20%;
 }
 
 .portrait-gradient {
