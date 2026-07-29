@@ -87,16 +87,3 @@ if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-mot
 } else {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
-
-const roleDetails = [...document.querySelectorAll("details.role")];
-window.addEventListener("beforeprint", () => {
-  roleDetails.forEach((details) => {
-    details.dataset.printOpen = details.open ? "1" : "0";
-    details.open = true;
-  });
-});
-window.addEventListener("afterprint", () => {
-  roleDetails.forEach((details) => {
-    details.open = details.dataset.printOpen === "1";
-  });
-});
