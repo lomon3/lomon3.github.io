@@ -2329,6 +2329,10 @@ body[data-lang="en"] .lang-en {
   }
 }
 
+.print-only {
+  display: none;
+}
+
 @media print {
   :root {
     --bg: #fff;
@@ -2344,20 +2348,35 @@ body[data-lang="en"] .lang-en {
   }
 
   @page {
-    margin: 12mm;
+    margin: 11mm;
     size: A4;
+  }
+
+  *,
+  *::before,
+  *::after {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
   }
 
   html,
   body {
     background: #fff !important;
-    font-size: 9pt;
+    font-size: 8pt;
+  }
+
+  body {
+    overflow: visible;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
   }
 
   body::before,
   .topbar,
   .scroll-progress,
-  .hero-visual,
   .hero-actions,
   .contact-section,
   .footer,
@@ -2366,27 +2385,125 @@ body[data-lang="en"] .lang-en {
     display: none !important;
   }
 
+  .print-only {
+    display: flex !important;
+  }
+
   .shell {
     width: 100%;
+    max-width: none;
   }
 
   .hero {
-    display: block;
-    min-height: auto;
-    padding: 0 0 10mm;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 58mm;
+    align-items: center;
+    gap: 9mm;
+    min-height: 166mm;
+    padding: 0 0 8mm;
+  }
+
+  .hero-copy {
+    max-width: none;
+  }
+
+  .print-identity {
+    display: grid !important;
+    gap: 0.7mm;
+    margin-bottom: 6mm;
+  }
+
+  .print-identity strong {
+    font-size: 14pt;
+    letter-spacing: -0.025em;
+  }
+
+  .print-identity span {
+    color: var(--muted);
+    font-size: 7.5pt;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .eyebrow {
+    margin-bottom: 5mm;
+    padding: 1.5mm 2.4mm;
+    font-size: 6.5pt;
   }
 
   .hero h1 {
-    max-width: 170mm;
-    font-size: 31pt;
+    max-width: 120mm;
+    margin-bottom: 5mm;
+    font-size: 27pt;
+    line-height: 0.98;
+  }
+
+  .hero-lead {
+    max-width: 118mm;
+    margin-bottom: 6mm;
+    font-size: 9.5pt;
+    line-height: 1.45;
   }
 
   .hero-facts {
-    margin-top: 6mm;
+    gap: 9mm;
+    margin-top: 0;
+  }
+
+  .fact-label {
+    font-size: 5.8pt;
+  }
+
+  .hero-facts strong {
+    font-size: 7.5pt;
+  }
+
+  .print-contact {
+    flex-wrap: wrap;
+    gap: 2mm 5mm;
+    margin-top: 7mm;
+    color: var(--text);
+    font-size: 7.5pt;
+    font-weight: 700;
+  }
+
+  .print-contact a {
+    padding-bottom: 1mm;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hero-visual {
+    display: block !important;
+    width: 58mm;
+    justify-self: end;
+  }
+
+  .portrait-wrap {
+    height: 78mm;
+    aspect-ratio: auto;
+    border-radius: 6mm;
+    box-shadow: none;
+  }
+
+  .portrait-wrap::after {
+    inset: 2.5mm;
+    border-radius: 4mm;
+  }
+
+  .portrait-wrap img {
+    object-position: 50% 12%;
+    transform: scale(1.08);
+  }
+
+  .orbit-card {
+    display: none !important;
   }
 
   .proof-strip {
-    page-break-after: always;
+    margin-inline: -11mm;
+    padding-inline: 11mm;
+    break-after: page;
   }
 
   .metrics-grid {
@@ -2394,76 +2511,457 @@ body[data-lang="en"] .lang-en {
   }
 
   .metric {
-    min-height: auto;
-    padding: 5mm;
+    min-height: 23mm;
+    padding: 4mm;
+  }
+
+  .metric:nth-child(3) {
+    border-right: 0;
+  }
+
+  .metric:nth-child(n+4) {
+    border-top: 1px solid var(--line);
+  }
+
+  .metric strong {
+    margin-bottom: 2mm;
+    font-size: 15pt;
+  }
+
+  .metric span {
+    font-size: 6.5pt;
   }
 
   .section {
-    padding-block: 9mm;
+    padding-block: 7mm;
   }
 
   .section-intro {
-    margin-bottom: 6mm;
+    grid-template-columns: 29mm minmax(0, 1fr);
+    gap: 5mm;
+    margin-bottom: 5mm;
   }
 
   .section-intro h2 {
-    font-size: 21pt;
+    font-size: 18pt;
+    line-height: 1.05;
   }
 
   .section-intro p {
-    font-size: 10pt;
+    font-size: 8pt;
+    line-height: 1.4;
   }
 
-  .value-card,
-  .case,
-  .timeline-company,
-  .skill-card,
-  .credentials {
+  .section-kicker {
+    font-size: 6pt;
+  }
+
+  .product-section {
+    padding-block: 7mm;
+  }
+
+  .product-section .section-intro {
+    margin-bottom: 5mm;
+  }
+
+  .product-section .section-intro h2 {
+    font-size: 18pt;
+  }
+
+  .product-pipeline {
+    margin-bottom: 4mm;
+    padding: 3mm 4mm;
+    border-radius: 4mm;
+  }
+
+  .product-pipeline > i {
+    padding-inline: 2mm;
+  }
+
+  .product-pipeline span,
+  .product-pipeline small {
+    font-size: 5.8pt;
+  }
+
+  .product-pipeline strong {
+    font-size: 7.5pt;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 3mm;
+  }
+
+  .product-card {
+    padding: 5mm;
     break-inside: avoid;
+    border-radius: 4mm;
     box-shadow: none;
   }
 
-  .value-card {
-    min-height: auto;
+  .product-card-main {
+    padding: 0;
   }
 
-  .value-icon,
-  .skill-heading {
-    margin-bottom: 6mm;
+  .product-card-main > .product-topline {
+    padding: 2.5mm 4mm;
   }
 
-  .case-title {
-    padding: 5mm;
+  .product-topline {
+    font-size: 5.5pt;
   }
 
-  .case-body {
-    grid-template-columns: 1fr 0.8fr;
+  .product-heading,
+  .product-promise,
+  .product-actions,
+  .product-result {
+    padding: 4mm;
   }
 
-  .case-story {
-    padding: 5mm;
+  .product-heading {
+    gap: 4mm;
   }
 
-  .case-impact {
-    padding: 5mm;
-    border-top: 0;
-    border-left: 1px solid var(--line);
+  .product-logo {
+    flex-basis: 13mm;
+    width: 13mm;
+    height: 13mm;
+    border-radius: 3.5mm;
+    font-size: 10pt;
   }
 
-  .case-impact-narrative {
-    display: block;
+  .product-heading h3,
+  .product-card-lab h3,
+  .product-card-os h3 {
+    font-size: 18pt;
   }
 
-  .case-footer {
-    display: none;
+  .product-heading p,
+  .product-tagline {
+    font-size: 6.5pt;
+  }
+
+  .product-promise p {
+    margin-top: 2mm;
+    font-size: 9.5pt;
+    line-height: 1.35;
+  }
+
+  .product-label {
+    font-size: 5.5pt;
+  }
+
+  .product-actions {
+    gap: 2mm;
+  }
+
+  .product-actions li {
+    grid-template-columns: 8mm 1fr;
+    gap: 2mm;
+    min-height: 12mm;
+    padding: 2mm;
+    border-radius: 3mm;
+  }
+
+  .product-actions b {
+    width: 8mm;
+    height: 8mm;
+    border-radius: 2mm;
+    font-size: 6pt;
+  }
+
+  .product-actions span,
+  .product-metrics span {
+    font-size: 6pt;
+  }
+
+  .product-metrics {
+    gap: 2mm 4mm;
+    margin-top: 2.5mm;
+  }
+
+  .product-metrics strong {
+    font-size: 12pt;
+  }
+
+  .product-footer {
+    padding: 2.5mm 4mm;
+    font-size: 5.8pt;
+  }
+
+  .product-card-lab {
+    min-height: 94mm;
+  }
+
+  .product-card-lab > .product-logo {
+    margin: 5mm 0 3mm;
+  }
+
+  .product-tagline {
+    min-height: 8mm;
+    margin: 2mm 0 4mm;
+  }
+
+  .product-does {
+    padding-top: 3mm;
+  }
+
+  .product-does p {
+    margin-top: 2mm;
+    font-size: 7pt;
+    line-height: 1.45;
+  }
+
+  .product-output {
+    padding: 3mm;
+    border-radius: 3mm;
+  }
+
+  .product-output span {
+    font-size: 5pt;
+  }
+
+  .product-output strong {
+    font-size: 6.5pt;
+  }
+
+  .chips {
+    gap: 1.3mm;
+  }
+
+  .chips span {
+    padding: 1.1mm 1.7mm;
+    font-size: 5.7pt;
+  }
+
+  .product-card-lab .chips {
+    margin-top: 3mm;
+  }
+
+  .product-card-os {
+    padding: 4mm;
+  }
+
+  .product-os-heading {
+    gap: 8mm;
+  }
+
+  .product-os-flow {
+    gap: 2mm;
+    margin-top: 3mm;
+    padding: 2.5mm 3mm;
+    border-radius: 3mm;
+    font-size: 5.5pt;
+  }
+
+  .supporting-section {
+    padding-bottom: 7mm;
+    break-inside: avoid;
+  }
+
+  .supporting-heading {
+    gap: 5mm;
+    margin-bottom: 4mm;
+    padding-top: 5mm;
+  }
+
+  .supporting-heading h2 {
+    font-size: 15pt;
+  }
+
+  .supporting-grid {
+    grid-template-columns: repeat(4, 1fr);
+    border-radius: 4mm;
+  }
+
+  .supporting-grid article {
+    min-height: 34mm;
+    padding: 4mm;
+  }
+
+  .supporting-grid strong {
+    margin-bottom: 5mm;
+    font-size: 7pt;
+  }
+
+  .supporting-grid p {
+    font-size: 6pt;
+    line-height: 1.4;
   }
 
   .experience-section {
-    page-break-before: always;
+    padding-block: 7mm;
+    break-before: page;
+  }
+
+  .timeline {
+    gap: 3mm;
+  }
+
+  .timeline-company {
+    grid-template-columns: 42mm minmax(0, 1fr);
+    gap: 5mm;
+    padding: 4mm;
+    border-radius: 4mm;
+    box-shadow: none;
+  }
+
+  .timeline-company:not(:first-child) {
+    break-inside: avoid;
+  }
+
+  .timeline-meta {
+    break-inside: avoid;
+  }
+
+  .timeline-meta h3 {
+    margin: 3mm 0 1.5mm;
+    font-size: 12pt;
+  }
+
+  .timeline-meta p,
+  .timeline-meta .company-rank {
+    font-size: 6.5pt;
+  }
+
+  .company-year {
+    font-size: 5.5pt;
+  }
+
+  .company-scale {
+    gap: 1mm;
+    margin-top: 4mm;
+    padding: 3mm;
+    border-radius: 3mm;
+  }
+
+  .company-scale strong {
+    font-size: 18pt;
+  }
+
+  .company-scale span {
+    font-size: 6pt;
+  }
+
+  .company-scale small,
+  .company-source {
+    font-size: 5pt;
+  }
+
+  .company-source {
+    margin-top: 2mm;
+  }
+
+  .role {
+    break-inside: avoid;
+  }
+
+  .role-header {
+    padding: 3.5mm 0 1.5mm;
+  }
+
+  .role-header strong {
+    font-size: 8pt;
+  }
+
+  .role-header small {
+    font-size: 5.8pt;
   }
 
   .role-content {
-    display: block !important;
+    padding-bottom: 3.5mm;
+    font-size: 7pt;
+    line-height: 1.35;
+  }
+
+  .role-content p {
+    margin-bottom: 2mm;
+  }
+
+  .role-content li + li {
+    margin-top: 1mm;
+  }
+
+  #skills {
+    padding-block: 7mm;
+    break-before: page;
+  }
+
+  #skills .section-intro {
+    margin-bottom: 5mm;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3mm;
+  }
+
+  #skills .skill-card {
+    min-height: 0;
+    padding: 4mm;
+    border-radius: 4mm;
+    box-shadow: none;
+  }
+
+  #skills .skill-heading {
+    gap: 3mm;
+    margin-bottom: 4mm;
+  }
+
+  .skill-heading span {
+    width: 8mm;
+    height: 8mm;
+    font-size: 5.5pt;
+  }
+
+  .skill-heading h3 {
+    font-size: 10pt;
+  }
+
+  .profile-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3mm;
+    margin-top: 5mm;
+  }
+
+  .profile-card {
+    padding: 4mm;
+    break-inside: avoid;
+  }
+
+  .check-list {
+    gap: 2mm;
+    margin-top: 4mm;
+  }
+
+  .check-list li {
+    padding-left: 4mm;
+    font-size: 6.7pt;
+    line-height: 1.35;
+  }
+
+  .credentials {
+    grid-template-columns: 1.4fr 0.75fr 0.85fr;
+    margin-top: 5mm;
+    break-inside: avoid;
+    border-radius: 4mm;
+  }
+
+  .credentials > div {
+    padding: 4mm;
+  }
+
+  .credentials .section-kicker {
+    margin-bottom: 4mm;
+  }
+
+  .credentials strong {
+    font-size: 6.5pt;
+  }
+
+  .credentials small {
+    margin-bottom: 2.5mm;
+    font-size: 5.5pt;
   }
 
   .reveal {
