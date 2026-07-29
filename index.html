@@ -45,15 +45,17 @@
     @media (max-width:900px){.g3{grid-template-columns:1fr}}
     @media (max-width:720px){.g2{grid-template-columns:1fr}}
 
-    .kpis{display:grid;gap:12px}
-    .kpis .item{display:grid;gap:4px;padding:16px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
-    .kpis .value{font-weight:900;font-size:20px}
-    .kpis .label{color:var(--muted);font-size:13px}
-
-    .callout{border-left:3px solid var(--accent);padding:8px 12px;background:var(--surface);border-radius:10px}
     .pill{padding:2px 8px;border-radius:8px;border:1px solid var(--border);font-size:12px;color:var(--muted)}
     .pill a{color:inherit; text-decoration: none;}
     .pill a:hover{color:var(--accent);}
+
+    .projects{display:grid;gap:14px}
+    .proj-card{padding:18px;border:1px solid var(--border);border-radius:16px;background:var(--surface);display:grid;gap:8px;align-content:start;transition:border-color .2s, transform .2s}
+    .proj-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+    .proj-icon{width:36px;height:36px;border-radius:10px;background:var(--chip);display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:15px}
+    .proj-title{font-weight:800;font-size:15px}
+    .proj-text{color:var(--muted);font-size:14px;margin:0}
+    .proj-stats{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
 
     footer{margin-top:40px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;font-size:14px}
 
@@ -64,18 +66,20 @@
     .company-name{font-weight:800;font-size:16px}
     .company-period{color:var(--muted);font-size:13px;white-space:nowrap}
     .roles{display:grid;gap:12px}
-    .role-entry{padding:14px;border:1px solid var(--border);border-radius:14px;background:var(--panel)}
+    .role-entry{position:relative;padding:14px 46px 14px 14px;border:1px solid var(--border);border-radius:14px;background:var(--panel);cursor:pointer;transition:border-color .2s}
+    .role-entry:hover{border-color:var(--accent)}
+    .role-entry:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
     .role-top{display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between;align-items:baseline}
     .role-title{font-weight:700}
     .role-period{color:var(--muted);font-size:13px;white-space:nowrap}
     .role-headline{margin:6px 0 0}
-    details.role-details{margin-top:8px}
-    details.role-details summary{cursor:pointer;color:var(--accent);font-size:13px;font-weight:700;list-style:none;display:inline-flex;align-items:center;gap:5px;user-select:none}
-    details.role-details summary::-webkit-details-marker{display:none}
-    details.role-details summary::before{content:"▸";display:inline-block;transition:transform .15s}
-    details.role-details[open] summary::before{transform:rotate(90deg)}
-    details.role-details ul{margin:10px 0 0;padding-left:18px}
-    details.role-details li + li{margin-top:4px}
+    .role-toggle-icon{position:absolute;top:14px;right:14px;width:26px;height:26px;border-radius:999px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;background:var(--surface);transition:transform .25s ease, color .2s, border-color .2s}
+    .role-entry:hover .role-toggle-icon{border-color:var(--accent);color:var(--accent)}
+    .role-entry.open .role-toggle-icon{transform:rotate(180deg);color:var(--accent);border-color:var(--accent)}
+    .role-body{max-height:0;overflow:hidden;opacity:0;transition:max-height .35s ease, opacity .25s ease}
+    .role-entry.open .role-body{max-height:800px;opacity:1;margin-top:8px}
+    .role-body ul{margin:0;padding-left:18px}
+    .role-body li + li{margin-top:4px}
 
     /* ====== Avatar ====== */
     .aside{display:grid;gap:12px;justify-items:end}
@@ -97,9 +101,10 @@
       .actions,.theme,.print-hide{display:none!important}
       body{background:#fff!important;color:#000!important}
       :root[data-theme="dark"]{--bg:#fff; --surface:#fff; --panel:#fff; --text:#000; --muted:#555; --border:#ddd; --chip:#eee; --accent:#000; --accent-2:#000;}
-      .panel,.company,.role-entry,.item{border-color:#ddd}
+      .panel,.company,.role-entry,.proj-card{border-color:#ddd}
       a{color:#000;text-decoration:none}
-      details.role-details summary{display:none}
+      .role-toggle-icon{display:none!important}
+      .role-entry{cursor:default;padding-right:14px}
     }
 
     /* minor polish */
@@ -119,8 +124,8 @@
         <h1 class="name">Артём Чернушевич</h1>
         <div class="title ru">Founder & CCO · Product Owner · маркетплейсы (WB/Ozon)</div>
         <div class="title en" style="display:none">Founder & CCO · Product Owner · Marketplaces (WB/Ozon)</div>
-        <div class="sub ru">Руковожу департаментом бренда и продуктом <strong>CyberSeller</strong> в компании из топ‑10 продавцов WB. Отвечаю на вопрос «зачем» на каждом уровне — от отбора товара до автоматизации продаж — и перевожу решения в измеримую эффективность.</div>
-        <div class="sub en" style="display:none">I run the brand department and own <strong>CyberSeller</strong> at a Top‑10 Wildberries seller. I answer "why" at every level — from sourcing to sales automation — and turn decisions into measurable efficiency.</div>
+        <div class="sub ru">Руковожу департаментом бренда и продуктом <strong>CyberSeller</strong> в топ‑10 продавце WB — отвечаю на вопрос «зачем» и перевожу решения в измеримую эффективность.</div>
+        <div class="sub en" style="display:none">I run the brand department and own <strong>CyberSeller</strong> at a Top‑10 Wildberries seller — I answer "why" and turn decisions into measurable efficiency.</div>
         <div class="tags ru">
           <span class="tag">Brand & Category Ownership</span>
           <span class="tag">Strategy & Roadmap</span>
@@ -161,10 +166,8 @@
     <section class="panel">
       <h2 class="ru"><i class="fa-solid fa-user-tie fa-fw"></i>Обо мне</h2>
       <h2 class="en" style="display:none"><i class="fa-solid fa-user-tie fa-fw"></i>About</h2>
-      <p class="lead ru">Руковожу департаментом бренда (Founder & CCO) и развиваю продукт <strong>CyberSeller</strong> в компании из топ‑10 продавцов на WB. Мой путь в продукт начался с руководства отделом продаж. Там я понял, что успех кроется не в хаотичных усилиях, а в построении чётких процессов и решениях, основанных на данных.</p>
-      <p class="lead en" style="display:none">I run the brand department (Founder & CCO) and develop the <strong>CyberSeller</strong> platform at a Top‑10 Wildberries seller. My journey into product began in sales leadership. It was there I realized that success isn't about chaotic effort, but about building clear processes and making decisions based on data.</p>
-      <div class="callout ru">Что меня увлекает больше всего: находить неочевидные рычаги роста — в алгоритмах маркетплейсов, в отборе и закупке товара, в автоматизации продаж и продвижения. Я всегда перевожу решения в измеримую эффективность и опираюсь на прозрачные метрики юнит-экономики (GMROI/ADROI).</div>
-      <div class="callout en" style="display:none">What excites me most: finding non-obvious growth levers — in marketplace algorithms, in product sourcing, in sales and promotion automation. I always translate decisions into measurable efficiency, grounded in clear unit-economic metrics like GMROI/ADROI.</div>
+      <p class="lead ru">Руковожу департаментом бренда (Founder & CCO) и продуктом <strong>CyberSeller</strong> в топ‑10 продавце WB. Начинал с руководства продажами — оттуда мой принцип: чёткие процессы и решения на данных вместо хаотичных усилий. Ищу неочевидные рычаги роста и перевожу их в измеримую эффективность (GMROI/ADROI).</p>
+      <p class="lead en" style="display:none">I run the brand department (Founder & CCO) and own <strong>CyberSeller</strong> at a Top‑10 Wildberries seller. I started in sales leadership — that's where my core principle came from: clear processes and data-driven decisions over chaotic effort. I hunt for non-obvious growth levers and turn them into measurable efficiency (GMROI/ADROI).</p>
       <div class="tags" style="margin-top:12px">
         <span class="pill ru">Минск · удалённо (GMT+3) · открыт к релокации</span>
         <span class="pill en" style="display:none">Minsk · remote (GMT+3) · open to relocation</span>
@@ -174,38 +177,50 @@
       </div>
     </section>
 
-    <!-- ====== KPI ====== -->
-    <section>
-      <h2 class="ru"><i class="fa-solid fa-chart-line fa-fw"></i>Ключевые результаты</h2>
-      <h2 class="en" style="display:none"><i class="fa-solid fa-chart-line fa-fw"></i>Key Outcomes</h2>
-      <div class="kpis g3 grid">
-        <div class="item"><div class="value">AI&nbsp;&gt;70%</div><div class="label ru">Автоматизировал >70% коммуникаций с клиентами (отзывы, вопросы) с помощью AI.</div><div class="label en" style="display:none">Automated >70% of customer comms (reviews, Q&A) using AI.</div></div>
-        <div class="item"><div class="value">Процесс → результат</div><div class="label ru">Автоматизировал процесс продаж: −50% к времени реакции, сэкономлено ≈15 ч/нед для команды.</div><div class="label en" style="display:none">Automated sales process: −50% response time, saved ≈15 hrs/week for the team.</div></div>
-        <div class="item"><div class="value">TTM −70%</div><div class="label ru">Ускорил запуск новых товаров через единый конвейер для контента.</div><div class="label en" style="display:none">Accelerated new product launches via a unified content pipeline.</div></div>
-        <div class="item"><div class="value">3 → 15</div><div class="label ru">Вырастил команду разработки CyberSeller в 5 раз, сохранив полную самоорганизацию на Agile/Scrum.</div><div class="label en" style="display:none">Grew the CyberSeller dev team 5x while keeping full self-organization on Agile/Scrum.</div></div>
-        <div class="item"><div class="value">+150% ADROI</div><div class="label ru">Добился роста ADROI, внедрив целевое управление рекламой. Увеличил число кампаний в 4 раза.</div><div class="label en" style="display:none">Achieved +150% ADROI with goal-oriented ad management. Scaled campaigns by 4x.</div></div>
-        <div class="item"><div class="value">~40%</div><div class="label ru">На 40% ускорил процессы ценообразования благодаря единой модели юнит-экономики.</div><div class="label en" style="display:none">Sped up pricing workflows by ~40% with a unified unit economics model.</div></div>
-      </div>
-    </section>
-
     <!-- ====== Projects ====== -->
-    <section class="panel">
+    <section>
       <h2 class="ru"><i class="fa-solid fa-rocket fa-fw"></i>Ключевые проекты</h2>
       <h2 class="en" style="display:none"><i class="fa-solid fa-rocket fa-fw"></i>Key Projects</h2>
-      <ul class="ru" style="margin:6px 0 0 18px">
-        <li><strong>Департамент бренда с нуля (2026 — н.в.):</strong> новый подход к отбору и закупке товара, автопланирование продаж, точки роста — размерная сетка, продажи в 5 точках сезона, полная автогенерация контента, автопродвижение.</li>
-        <li><strong>CyberSeller — сервис для работы с маркетплейсами:</strong> контент, цены, продвижение, аналитика, процессы; полный продуктовый цикл.</li>
-        <li><strong>РОП‑система (продукт‑система):</strong> процесс и этапы внутри сервиса, чтобы специалист проводил рабочий день end‑to‑end в одной системе.</li>
-        <li><strong>Собственный бизнес на маркетплейсах:</strong> держу руку на пульсе практики, тестирую гипотезы и подходы.</li>
-        <li><strong>Проект развития отдела продаж:</strong> система мотивации с учётом финансовых целей компании + менторинг для роста скиллов.</li>
-      </ul>
-      <ul class="en" style="display:none; margin:6px 0 0 18px">
-        <li><strong>Brand department, built from zero (2026 — present):</strong> a new approach to product sourcing and purchasing, automated sales planning, growth levers — size grid, 5 seasonal sales points, full content auto-generation, auto-promotion.</li>
-        <li><strong>CyberSeller — marketplace operations platform:</strong> content, pricing, promotion, analytics, processes; full product lifecycle.</li>
-        <li><strong>Sales‑Ops (RoP) System:</strong> process & stage orchestration so specialists spend their day end‑to‑end in one system.</li>
-        <li><strong>Own marketplace business:</strong> hands‑on practice to test hypotheses and approaches.</li>
-        <li><strong>Sales team growth program:</strong> motivation system aligned with company goals + mentoring.</li>
-      </ul>
+      <div class="projects grid g2">
+        <div class="proj-card">
+          <div class="proj-icon"><i class="fa-solid fa-flag-checkered"></i></div>
+          <div class="proj-title ru">Департамент бренда — новое юрлицо с нуля</div>
+          <div class="proj-title en" style="display:none">Brand department — a new legal entity from zero</div>
+          <p class="proj-text ru">Учредил юрлицо, собрал команду и офис, запустил деятельность по 3‑летней стратегии с инновационным подходом к отбору и закупке товара.</p>
+          <p class="proj-text en" style="display:none">Founded the entity, built the team and office, launched operations on a 3-year strategy with an innovative approach to sourcing.</p>
+          <div class="proj-stats">
+            <span class="tag ru">15 человек · 550 м²</span>
+            <span class="tag en" style="display:none">15 people · 550 m²</span>
+            <span class="tag ru">Стратегия на 3 года</span>
+            <span class="tag en" style="display:none">3-year strategy</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-icon"><i class="fa-solid fa-layer-group fa-fw"></i></div>
+          <div class="proj-title ru">CyberSeller — топ‑1 сервис для маркетплейсов в СНГ</div>
+          <div class="proj-title en" style="display:none">CyberSeller — the #1 marketplace platform in the CIS</div>
+          <p class="proj-text ru">Полный продуктовый цикл: контент, цены, продвижение, аналитика, процессы. Ключевое конкурентное преимущество компании.</p>
+          <p class="proj-text en" style="display:none">Full product lifecycle: content, pricing, promotion, analytics, processes. A key competitive edge for the company.</p>
+          <div class="proj-stats">
+            <span class="tag">3 → 15</span>
+            <span class="tag">ADROI +150%</span>
+          </div>
+        </div>
+        <div class="proj-card">
+          <div class="proj-icon"><i class="fa-solid fa-diagram-project fa-fw"></i></div>
+          <div class="proj-title ru">РОП‑система</div>
+          <div class="proj-title en" style="display:none">Sales‑Ops (RoP) System</div>
+          <p class="proj-text ru">Собрал весь рабочий день продавца в одной системе — от задачи до отчёта, без переключений между инструментами.</p>
+          <p class="proj-text en" style="display:none">Brought a seller's entire workday into one system — task to report, no tool-switching.</p>
+        </div>
+        <div class="proj-card">
+          <div class="proj-icon"><i class="fa-solid fa-store fa-fw"></i></div>
+          <div class="proj-title ru">Собственный бизнес на маркетплейсах</div>
+          <div class="proj-title en" style="display:none">Own marketplace business</div>
+          <p class="proj-text ru">Тестирую гипотезы на своих товарах, прежде чем внедрять их в продукт и в команду — держу руку на пульсе практики.</p>
+          <p class="proj-text en" style="display:none">Test hypotheses on my own products before rolling them into the product and the team — staying hands-on with practice.</p>
+        </div>
+      </div>
     </section>
 
     <!-- ====== Strengths ====== -->
@@ -326,33 +341,35 @@
           </div>
           <div class="roles">
 
-            <div class="role-entry">
+            <div class="role-entry open">
+              <span class="role-toggle-icon"><i class="fa-solid fa-chevron-down"></i></span>
               <div class="role-top">
                 <span class="role-title ru">Начальник департамента бренда — Founder & CCO</span>
                 <span class="role-title en" style="display:none">Head of Brand Department — Founder & CCO</span>
                 <span class="role-period">Март 2026 — н.в.</span>
               </div>
-              <p class="role-headline ru">Строю бренд с нуля: новый подход к отбору и закупке товара, автоматизация продаж на каждом уровне воронки.</p>
-              <p class="role-headline en" style="display:none">Building a brand from zero: a new approach to product sourcing and purchasing, sales automation at every level of the funnel.</p>
-              <details class="role-details" open>
-                <summary class="ru">Подробнее</summary>
-                <summary class="en" style="display:none">Details</summary>
+              <p class="role-headline ru">Учредил новое юрлицо и построил бизнес с нуля: команда 15 человек, офис 550 м², стратегия на 3 года.</p>
+              <p class="role-headline en" style="display:none">Founded a new legal entity and built the business from zero: a 15-person team, a 550 m² office, a 3-year strategy.</p>
+              <div class="role-body">
                 <ul class="ru">
-                  <li>Внедрил принципиально новый подход к поиску и отбору товара под закупку, планированию поставок и продаж.</li>
-                  <li>Настроил автоматическое планирование продаж и автопродажи на каждом уровне воронки.</li>
-                  <li>Нашёл и реализовал точки роста: размерная сетка, продажи в 5 точках сезона, полный переход на автогенерацию контента, автопродвижение, стимулирование органического трафика.</li>
-                  <li>Построил «фабрику моделей и товаров» силами команды — производство карточек и вариаций без внешних подрядчиков.</li>
+                  <li>Разработал и запустил стратегию на 3 года — от организации ЮЛ и найма до операционного старта деятельности.</li>
+                  <li>Внедрил инновационный подход к отбору и закупке товара, планированию поставок и продаж.</li>
+                  <li>Автоматизировал планирование продаж и автопродажи на каждом уровне воронки.</li>
+                  <li>Точки роста: размерная сетка, продажи в 5 точках сезона, полная автогенерация контента, автопродвижение, органический трафик.</li>
+                  <li>Построил «фабрику моделей и товаров» силами команды — без внешних подрядчиков.</li>
                 </ul>
                 <ul class="en" style="display:none">
-                  <li>Introduced a fundamentally new approach to sourcing and selecting products for purchase, and to planning deliveries and sales.</li>
-                  <li>Set up automated sales planning and auto-sales at every level of the funnel.</li>
-                  <li>Found and executed growth levers: size grid, sales across 5 seasonal points, full transition to content auto-generation, auto-promotion, organic traffic growth.</li>
-                  <li>Built a "model/product factory" run entirely by the team — in-house production of listings and variants, no external contractors.</li>
+                  <li>Designed and launched a 3-year strategy — from setting up the legal entity and hiring to the operational launch.</li>
+                  <li>Introduced an innovative approach to sourcing and selecting products, and to planning deliveries and sales.</li>
+                  <li>Automated sales planning and auto-sales at every level of the funnel.</li>
+                  <li>Growth levers: size grid, sales across 5 seasonal points, full content auto-generation, auto-promotion, organic traffic.</li>
+                  <li>Built a "model/product factory" run entirely by the team — no external contractors.</li>
                 </ul>
-              </details>
+              </div>
             </div>
 
             <div class="role-entry">
+              <span class="role-toggle-icon"><i class="fa-solid fa-chevron-down"></i></span>
               <div class="role-top">
                 <span class="role-title ru">Менеджер по продукту (PO) — сервис «CyberSeller»</span>
                 <span class="role-title en" style="display:none">Product Manager / PO — CyberSeller platform</span>
@@ -360,37 +377,26 @@
               </div>
               <p class="role-headline ru">Вырастил команду CyberSeller с 3 до 15 человек и вывел сервис в топ‑1 на рынке МП СНГ.</p>
               <p class="role-headline en" style="display:none">Grew the CyberSeller team from 3 to 15 and made it the #1 platform on the CIS marketplace-tooling market.</p>
-              <details class="role-details">
-                <summary class="ru">Подробнее</summary>
-                <summary class="en" style="display:none">Details</summary>
+              <div class="role-body">
                 <ul class="ru">
-                  <li>Уникальный для рынка сервис — одно из ключевых конкурентных преимуществ компании (топ‑1 среди сервисов для маркетплейсов в СНГ).</li>
-                  <li>Перевёл команду на Agile Scrum с полной самоорганизацией и автопилотом.</li>
-                  <li>Анализирую эффективность бизнеса, обеспечиваю кратный рост value бизнеса год к году.</li>
-                  <li>Работаю на стыке бизнеса и аутсорс‑разработки: команда доставляет фичи с учётом бизнес‑запроса и моего опыта, без ручного управления.</li>
-                  <li>Понимаю каждый этап воронки продукта, считаю её от цели и детализирую, генерирую гипотезы роста.</li>
-                  <li>Планирую и веду бюджет команды; закупаю и продаю товары команды для самообеспечения и быстрого тестирования гипотез.</li>
-                  <li>Внедрил AI‑систему для ответов на отзывы и вопросы — более 70% коммуникаций, вдвое короче время реакции.</li>
-                  <li>Организовал единый контент‑пайплайн (от фото до SEO) — ускорил вывод новых товаров на 70%.</li>
-                  <li>Разработал инструменты ценообразования и продвижения — ADROI +150%, ценовые процессы быстрее на 40%.</li>
-                  <li>Формирую AI‑культуру в компании: агенты для всех.</li>
+                  <li>Уникальный для рынка сервис — топ‑1 среди инструментов для маркетплейсов в СНГ; команда выросла с 3 до 15 человек.</li>
+                  <li>Полная самоорганизация на Agile Scrum: считаю воронку от цели, веду бюджет и гипотезы роста.</li>
+                  <li>AI‑система для отзывов и вопросов закрывает 70% коммуникаций, вдвое ускорила реакцию.</li>
+                  <li>Единый контент‑пайплайн (фото → SEO) — вывод новых товаров быстрее на 70%.</li>
+                  <li>Инструменты ценообразования и продвижения — ADROI +150%, цены быстрее на 40%.</li>
                 </ul>
                 <ul class="en" style="display:none">
-                  <li>A market-unique service — one of the company's key competitive advantages (#1 among marketplace tooling services in the CIS).</li>
-                  <li>Moved the team to Agile Scrum with full self-organization and autopilot.</li>
-                  <li>Analyze business efficiency, deliver multiple-fold YoY growth in business value.</li>
-                  <li>Sit at the intersection of business and outsourced development: the team ships features aligned with business needs and my domain experience, without manual oversight.</li>
-                  <li>Understand every stage of the product funnel; model it from the goal down and generate growth hypotheses.</li>
-                  <li>Plan and manage the team budget; buy and sell the team's own products for self-sufficiency and fast hypothesis testing.</li>
-                  <li>Implemented an AI system for reviews and Q&A — over 70% of communications, halving response time.</li>
-                  <li>Built a unified content pipeline (photos to SEO) — cut new-product time-to-market by 70%.</li>
-                  <li>Built pricing and promotion tools — +150% ADROI, 40% faster pricing workflow.</li>
-                  <li>Driving an AI-first culture across the company: agents for everyone.</li>
+                  <li>A market-unique service — #1 among marketplace tooling in the CIS; grew the team from 3 to 15.</li>
+                  <li>Full self-organization on Agile Scrum: model the funnel from the goal, own the budget and growth hypotheses.</li>
+                  <li>AI system for reviews and Q&A covers 70% of communications, halving response time.</li>
+                  <li>Unified content pipeline (photo → SEO) — 70% faster new-product launches.</li>
+                  <li>Pricing and promotion tools — +150% ADROI, 40% faster pricing.</li>
                 </ul>
-              </details>
+              </div>
             </div>
 
             <div class="role-entry">
+              <span class="role-toggle-icon"><i class="fa-solid fa-chevron-down"></i></span>
               <div class="role-top">
                 <span class="role-title ru">Начальник отдела продаж</span>
                 <span class="role-title en" style="display:none">Head of Sales</span>
@@ -399,9 +405,7 @@
               </div>
               <p class="role-headline ru">Построил систему работы с товаром в отделе, вывел оборот на стабильный уровень и передал проект.</p>
               <p class="role-headline en" style="display:none">Built a systematic product workflow for the department, brought turnover to a stable level, and handed the project off.</p>
-              <details class="role-details">
-                <summary class="ru">Подробнее</summary>
-                <summary class="en" style="display:none">Details</summary>
+              <div class="role-body">
                 <ul class="ru">
                   <li>Выстроил систему работы с товарами в команде продаж.</li>
                   <li>Увеличил товарооборот, вывел отдел на стабильный уровень дохода.</li>
@@ -412,7 +416,7 @@
                   <li>Increased turnover, brought the department to a stable income level.</li>
                   <li>Handed the department to a successor — processes still run without me.</li>
                 </ul>
-              </details>
+              </div>
             </div>
 
           </div>
@@ -427,6 +431,7 @@
           </div>
           <div class="roles">
             <div class="role-entry">
+              <span class="role-toggle-icon"><i class="fa-solid fa-chevron-down"></i></span>
               <div class="role-top">
                 <span class="role-title ru">Руководитель проекта</span>
                 <span class="role-title en" style="display:none">Project Lead</span>
@@ -435,9 +440,7 @@
               </div>
               <p class="role-headline ru">Вывел 600 тыс. SKU на маркетплейсы и перестроил отбор товара на 6 складах.</p>
               <p class="role-headline en" style="display:none">Launched 600K SKUs onto marketplaces and rebuilt product picking across 6 warehouses.</p>
-              <details class="role-details">
-                <summary class="ru">Подробнее</summary>
-                <summary class="en" style="display:none">Details</summary>
+              <div class="role-body">
                 <ul class="ru">
                   <li>Разработал систему приоритизации и управления ассортиментом и остатком.</li>
                   <li>Изменил процесс отборки товара на 6 складах под передачу на маркетплейсы.</li>
@@ -448,7 +451,7 @@
                   <li>Redesigned the product-picking process across 6 warehouses for marketplace handoff.</li>
                   <li>The project is still running and evolving today.</li>
                 </ul>
-              </details>
+              </div>
             </div>
           </div>
         </article>
@@ -463,6 +466,7 @@
           <div class="roles">
 
             <div class="role-entry">
+              <span class="role-toggle-icon"><i class="fa-solid fa-chevron-down"></i></span>
               <div class="role-top">
                 <span class="role-title ru">Директор</span>
                 <span class="role-title en" style="display:none">Director</span>
@@ -471,9 +475,7 @@
               </div>
               <p class="role-headline ru">Импортировал два новых для СНГ продукта и кратно нарастил прибыль год к году.</p>
               <p class="role-headline en" style="display:none">Imported two products entirely new to the CIS market and grew profit multiple times over year over year.</p>
-              <details class="role-details">
-                <summary class="ru">Подробнее</summary>
-                <summary class="en" style="display:none">Details</summary>
+              <div class="role-body">
                 <ul class="ru">
                   <li>Наладил импорт двух совершенно новых для рынка СНГ продуктов, включая постоянные споры с таможней и кратное снижение пошлины.</li>
                   <li>Добился кратного роста прибыли от года к году.</li>
@@ -484,10 +486,11 @@
                   <li>Achieved multiple-fold YoY profit growth.</li>
                   <li>The company still operates successfully today.</li>
                 </ul>
-              </details>
+              </div>
             </div>
 
             <div class="role-entry">
+              <span class="role-toggle-icon"><i class="fa-solid fa-chevron-down"></i></span>
               <div class="role-top">
                 <span class="role-title ru">Специалист по работе с маркетплейсом</span>
                 <span class="role-title en" style="display:none">Marketplace Specialist</span>
@@ -496,16 +499,14 @@
               </div>
               <p class="role-headline ru">Перевёл всю товарную матрицу из розничных сетей на Wildberries с ростом эффективности.</p>
               <p class="role-headline en" style="display:none">Migrated the entire product matrix from retail chains to Wildberries with a measurable efficiency gain.</p>
-              <details class="role-details">
-                <summary class="ru">Подробнее</summary>
-                <summary class="en" style="display:none">Details</summary>
+              <div class="role-body">
                 <ul class="ru">
                   <li>Полностью перевёл ассортимент компании из розничных сетей на маркетплейс Wildberries, повысив эффективность продаж.</li>
                 </ul>
                 <ul class="en" style="display:none">
                   <li>Fully migrated the company's assortment from retail chains to Wildberries, improving sales efficiency.</li>
                 </ul>
-              </details>
+              </div>
             </div>
 
           </div>
@@ -582,11 +583,22 @@
     langRuBtn.addEventListener('click',()=>applyLang('ru'));
     langEnBtn.addEventListener('click',()=>applyLang('en'));
 
-    // expand all role details when printing, restore after
+    // role accordion: click/keyboard toggle, all open when printing
     (function(){
-      const details=[...document.querySelectorAll('details.role-details')];
-      window.addEventListener('beforeprint',()=>{details.forEach(d=>{d.dataset.wasOpen=d.open?'1':'0'; d.open=true;});});
-      window.addEventListener('afterprint',()=>{details.forEach(d=>{d.open=d.dataset.wasOpen==='1';});});
+      const entries=[...document.querySelectorAll('.role-entry')];
+      entries.forEach(entry=>{
+        entry.setAttribute('tabindex','0');
+        entry.setAttribute('role','button');
+        entry.setAttribute('aria-expanded', entry.classList.contains('open')?'true':'false');
+        const toggle=()=>{
+          const open=entry.classList.toggle('open');
+          entry.setAttribute('aria-expanded', open?'true':'false');
+        };
+        entry.addEventListener('click',toggle);
+        entry.addEventListener('keydown',(e)=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); toggle(); } });
+      });
+      window.addEventListener('beforeprint',()=>{entries.forEach(entry=>{entry.dataset.wasOpen=entry.classList.contains('open')?'1':'0'; entry.classList.add('open');});});
+      window.addEventListener('afterprint',()=>{entries.forEach(entry=>{if(entry.dataset.wasOpen!=='1') entry.classList.remove('open');});});
     })();
 
     // scroll progress bar
