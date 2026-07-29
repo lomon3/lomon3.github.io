@@ -1,610 +1,633 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru" itemscope itemtype="https://schema.org/Person">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Артём Чернушевич — Founder & CCO / Product Owner</title>
-  <meta name="description" content="Founder & CCO / Product Owner. SaaS, e‑commerce/marketplaces (WB/Ozon). Бренд с нуля, алгоритмы продвижения/рекламы, динамическое ценообразование, AI‑интеграции, A/B‑тесты, удержание/ретеншн, DS/ML‑процессы.">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <style>
-    /* ====== Reset & theme ====== */
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0; font:16px/1.65 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; letter-spacing:.2px; background:var(--bg); color:var(--text); overflow-x:hidden; transition: background 0.3s, color 0.3s;}
-    html{background:var(--bg)}
-    :root{ --bg:#0b0c0f; --surface:#0f1219; --panel:#121623; --text:#e9eef6; --muted:#9ba7b8; --border:#1e2536; --chip:#161b28; --accent:#7ab8ff; --accent-2:#a6e3a1; --shadow: 0 8px 24px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.02); }
-    [data-theme="light"]{ --bg:#f7f9fc; --surface:#ffffff; --panel:#ffffff; --text:#121623; --muted:#5a6472; --border:#e7edf6; --chip:#eef3ff; --accent:#2f6feb; --accent-2:#11875d; --shadow: 0 8px 24px rgba(15,23,42,.08), inset 0 1px 0 rgba(255,255,255,.4); }
-
-    /* ====== Layout ====== */
-    .wrap{max-width:1040px;margin:0 auto;padding:32px 20px 80px;overflow-x:hidden}
-    header{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 24px;align-items:start}
-    @media (max-width:720px){header{grid-template-columns:1fr;}}
-
-    /* ====== Components ====== */
-    .name{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:.3px;margin:0}
-    .title{margin-top:6px;color:var(--muted);font-weight:600}
-    .sub{margin-top:6px;color:var(--muted)}
-    .btn{background:var(--panel);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:10px 14px;font-weight:700;cursor:pointer;box-shadow:var(--shadow); transition: border-color 0.2s;}
-    .btn:hover{border-color:var(--accent)}
-    .btn.active{border-color:var(--accent); background:var(--chip);}
-    .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;}
-
-    .panel{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:22px;box-shadow:var(--shadow)}
-    section{margin-top:26px}
-    h2{margin:0 0 12px; font-size:13px; text-transform:uppercase; letter-spacing:.35px; color:var(--muted); display: flex; align-items: center;}
-    h2 .fa-fw{width: 1.25em; color: var(--muted); margin-right: 8px;}
-    .h1{font-size:18px;font-weight:800;margin:0 0 6px}
-    .lead{font-size:16px}
-
-    .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
-    .tag{background:var(--chip);border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:13px}
-
-    .grid{display:grid;gap:16px}
-    .g2{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .g3{grid-template-columns:repeat(3,minmax(0,1fr))}
-    @media (max-width:900px){.g3{grid-template-columns:1fr}}
-    @media (max-width:720px){.g2{grid-template-columns:1fr}}
-
-    .kpis{display:grid;gap:12px}
-    .kpis .item{display:grid;gap:4px;padding:16px;border:1px solid var(--border);border-radius:14px;background:var(--surface)}
-    .kpis .value{font-weight:900;font-size:20px}
-    .kpis .label{color:var(--muted);font-size:13px}
-
-    .callout{border-left:3px solid var(--accent);padding:8px 12px;background:var(--surface);border-radius:10px}
-    .pill{padding:2px 8px;border-radius:8px;border:1px solid var(--border);font-size:12px;color:var(--muted)}
-    .pill a{color:inherit; text-decoration: none;}
-    .pill a:hover{color:var(--accent);}
-
-    footer{margin-top:40px;color:var(--muted);display:flex;justify-content:space-between;align-items:center;font-size:14px}
-
-    /* ====== Experience: companies & roles ====== */
-    .companies{display:grid;gap:16px}
-    .company{padding:18px;border:1px solid var(--border);border-radius:18px;background:var(--surface)}
-    .company-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 14px;margin-bottom:12px}
-    .company-name{font-weight:800;font-size:16px}
-    .company-period{color:var(--muted);font-size:13px;white-space:nowrap}
-    .roles{display:grid;gap:12px}
-    .role-entry{padding:14px;border:1px solid var(--border);border-radius:14px;background:var(--panel)}
-    .role-top{display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:space-between;align-items:baseline}
-    .role-title{font-weight:700}
-    .role-period{color:var(--muted);font-size:13px;white-space:nowrap}
-    .role-headline{margin:6px 0 0}
-    details.role-details{margin-top:8px}
-    details.role-details summary{cursor:pointer;color:var(--accent);font-size:13px;font-weight:700;list-style:none;display:inline-flex;align-items:center;gap:5px;user-select:none}
-    details.role-details summary::-webkit-details-marker{display:none}
-    details.role-details summary::before{content:"▸";display:inline-block;transition:transform .15s}
-    details.role-details[open] summary::before{transform:rotate(90deg)}
-    details.role-details ul{margin:10px 0 0;padding-left:18px}
-    details.role-details li + li{margin-top:4px}
-
-    /* ====== Avatar ====== */
-    .aside{display:grid;gap:12px;justify-items:end}
-    .avatar{width:clamp(160px,22vw,280px);aspect-ratio:4/5;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:var(--shadow);background:var(--surface)}
-    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
-
-    /* MOBILE ADAPTATIONS */
-    @media (max-width:720px){
-      .aside{justify-items:start; order: -1; margin-bottom: 16px;} /* Move avatar block to top */
-      .avatar{width:clamp(120px,50vw,220px);aspect-ratio:4/5}
-      .actions{justify-self: start;}
-      .role-top {gap: 4px 14px;}
-      .role-period {margin-left: 0; white-space: normal;}
-      .company-period{white-space: normal;}
-    }
-
-    /* Print */
-    @media print{
-      .actions,.theme,.print-hide{display:none!important}
-      body{background:#fff!important;color:#000!important}
-      :root[data-theme="dark"]{--bg:#fff; --surface:#fff; --panel:#fff; --text:#000; --muted:#555; --border:#ddd; --chip:#eee; --accent:#000; --accent-2:#000;}
-      .panel,.company,.role-entry,.item{border-color:#ddd}
-      a{color:#000;text-decoration:none}
-      details.role-details summary{display:none}
-    }
-
-    /* minor polish */
-    header::after{content:"";display:block;height:1px;margin-top:12px;background:linear-gradient(90deg,transparent,rgba(127,127,127,.25),transparent)}
-    header > div{min-width:0}
-    #progress{position:fixed;top:0;left:0;right:0;height:3px;width:0;opacity:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));box-shadow:0 0 8px rgba(0,0,0,.2);z-index:2147483647;pointer-events:none}
-  </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b100f">
+  <title>Артём Чернушевич — Product Leader · AI × e-commerce</title>
+  <meta name="description" content="Product Leader и Founder &amp; CCO. Строю AI-продукты и автономные системы роста для e-commerce: от исследования спроса и товара до контента, цены, рекламы и аналитики.">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Артём Чернушевич — Product Leader · AI × e-commerce">
+  <meta property="og:description" content="Превращаю сложность маркетплейсов в управляемый рост: продукт, данные, AI и сильные команды.">
+  <meta property="og:image" content="https://lomon3.github.io/avatar.jpg">
+  <meta property="og:url" content="https://lomon3.github.io/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
   <script type="application/ld+json">
-  { "@context":"https://schema.org", "@type":"Person", "name":"Артём Чернушевич", "jobTitle":"Founder & CCO / Product Owner", "email":"mailto:lomon3@gmail.com", "telephone":"+375299380510", "address":{"@type":"PostalAddress","addressLocality":"Минск"}, "knowsAbout":["Product Management","Brand Management","SaaS","Marketplaces","Retention","A/B testing","Pricing","AI","DS/ML","BPMN"], "sameAs":["https://t.me/ArChernushevich"] }
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Артём Чернушевич",
+    "url": "https://lomon3.github.io/",
+    "image": "https://lomon3.github.io/avatar.jpg",
+    "jobTitle": "Product Leader, Founder \u0026 CCO",
+    "email": "mailto:lomon3@gmail.com",
+    "telephone": "+375299380510",
+    "address": {"@type": "PostalAddress", "addressLocality": "Минск", "addressCountry": "BY"},
+    "knowsAbout": ["Product Management", "e-commerce", "Marketplaces", "AI", "GenAI", "Dynamic Pricing", "Growth", "DS/ML", "Brand Management", "Product Operations"],
+    "sameAs": ["https://t.me/ArChernushevich", "https://by.linkedin.com/in/artyom-chernushevich-39215917b"]
+  }
   </script>
 </head>
-<body data-theme="dark">
-  <div id="progress"></div>
-  <div class="wrap" data-lang="ru">
-    <header>
+<body data-theme="dark" data-lang="ru">
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <nav class="nav shell" aria-label="Основная навигация">
+      <a class="brand" href="#top" aria-label="Артём Чернушевич — наверх">
+        <span class="brand-mark">АЧ</span>
+        <span class="brand-copy">
+          <strong>Артём Чернушевич</strong>
+          <small>Product systems builder</small>
+        </span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#cases"><span class="lang-ru">Кейсы</span><span class="lang-en">Cases</span></a>
+        <a href="#experience"><span class="lang-ru">Опыт</span><span class="lang-en">Experience</span></a>
+        <a href="#skills"><span class="lang-ru">Компетенции</span><span class="lang-en">Skills</span></a>
+      </div>
+
+      <div class="nav-actions">
+        <div class="segmented" aria-label="Language">
+          <button class="lang-button is-active" type="button" data-set-lang="ru" aria-pressed="true">RU</button>
+          <button class="lang-button" type="button" data-set-lang="en" aria-pressed="false">EN</button>
+        </div>
+        <button class="icon-button" id="themeButton" type="button" aria-label="Переключить тему">
+          <svg class="theme-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg>
+          <svg class="theme-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2Z"/></svg>
+        </button>
+        <a class="nav-cta" href="#contact">
+          <span class="lang-ru">Обсудить задачу</span><span class="lang-en">Let’s talk</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-copy reveal">
+        <div class="eyebrow">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span class="lang-ru">Открыт к сильным продуктовым задачам</span>
+          <span class="lang-en">Open to ambitious product challenges</span>
+        </div>
+
+        <h1>
+          <span class="lang-ru">Превращаю сложность e‑commerce в <em>управляемый рост</em></span>
+          <span class="lang-en">I turn e‑commerce complexity into <em>manageable growth</em></span>
+        </h1>
+
+        <p class="hero-lead lang-ru">Я Product Leader и Founder &amp; CCO. Соединяю стратегию, данные, AI и команды, чтобы построить работающую систему целиком — от выбора товара до автоматических продаж.</p>
+        <p class="hero-lead lang-en">I’m a Product Leader and Founder &amp; CCO. I connect strategy, data, AI and teams to build the whole operating system — from product selection to automated sales.</p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="mailto:lomon3@gmail.com">
+            <span class="lang-ru">Предложить задачу</span><span class="lang-en">Discuss an opportunity</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+          <a class="button button-ghost" href="#cases">
+            <span class="lang-ru">Смотреть кейсы</span><span class="lang-en">Explore cases</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+
+        <div class="hero-facts">
+          <div>
+            <span class="fact-label lang-ru">Фокус</span><span class="fact-label lang-en">Focus</span>
+            <strong>AI × Product × Commerce</strong>
+          </div>
+          <div>
+            <span class="fact-label lang-ru">Формат</span><span class="fact-label lang-en">Format</span>
+            <strong class="lang-ru">Минск · Remote · Relocation</strong>
+            <strong class="lang-en">Minsk · Remote · Relocation</strong>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-visual reveal">
+        <div class="portrait-wrap">
+          <img src="./avatar.jpg" alt="Артём Чернушевич" width="853" height="861">
+          <div class="portrait-gradient" aria-hidden="true"></div>
+          <div class="portrait-caption">
+            <span class="mono">2017 → 2026</span>
+            <strong class="lang-ru">9 лет внутри e‑commerce</strong>
+            <strong class="lang-en">9 years inside e‑commerce</strong>
+          </div>
+        </div>
+        <div class="orbit-card orbit-card-one">
+          <span class="orbit-icon">↗</span>
+          <span class="lang-ru">От идеи<br>до P&amp;L</span>
+          <span class="lang-en">From idea<br>to P&amp;L</span>
+        </div>
+        <div class="orbit-card orbit-card-two">
+          <span class="orbit-value">0→1→n</span>
+          <span class="lang-ru">строю и масштабирую</span>
+          <span class="lang-en">build and scale</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="proof-strip" aria-label="Ключевые результаты">
+      <div class="shell metrics-grid">
+        <article class="metric reveal">
+          <strong>&gt;70%</strong>
+          <span class="lang-ru">коммуникаций автоматизировано AI</span>
+          <span class="lang-en">communications automated with AI</span>
+        </article>
+        <article class="metric reveal">
+          <strong>−70%</strong>
+          <span class="lang-ru">time-to-market новых товаров</span>
+          <span class="lang-en">new-product time-to-market</span>
+        </article>
+        <article class="metric reveal">
+          <strong>+150%</strong>
+          <span class="lang-ru">ADROI после смены модели управления</span>
+          <span class="lang-en">ADROI after management redesign</span>
+        </article>
+        <article class="metric reveal">
+          <strong>3 → 15</strong>
+          <span class="lang-ru">рост продуктовой команды</span>
+          <span class="lang-en">product team growth</span>
+        </article>
+        <article class="metric reveal">
+          <strong>600K</strong>
+          <span class="lang-ru">SKU выведено на маркетплейсы</span>
+          <span class="lang-en">SKUs launched on marketplaces</span>
+        </article>
+        <article class="metric reveal">
+          <strong>≈15 ч</strong>
+          <span class="lang-ru">в неделю возвращено команде</span>
+          <span class="lang-en">returned to the team every week</span>
+        </article>
+      </div>
+    </section>
+
+    <section class="section shell" id="value">
+      <div class="section-intro reveal">
+        <span class="section-kicker">01 / VALUE</span>
+        <h2 class="lang-ru">Вы нанимаете не «менеджера фич». Вы нанимаете владельца результата.</h2>
+        <h2 class="lang-en">You are not hiring a “feature manager.” You are hiring an outcome owner.</h2>
+        <p class="lang-ru">Моя сильная сторона — видеть весь контур бизнеса, находить главный рычаг и доводить изменение до цифры, которой доверяют.</p>
+        <p class="lang-en">My strength is seeing the whole business system, finding the highest-leverage move and delivering a number people can trust.</p>
+      </div>
+
+      <div class="value-grid">
+        <article class="value-card reveal">
+          <span class="card-number">01</span>
+          <div class="value-icon">◎</div>
+          <h3 class="lang-ru">Нахожу, где теряется value</h3>
+          <h3 class="lang-en">Find where value leaks</h3>
+          <p class="lang-ru">Декомпозирую воронку от бизнес-цели, связываю пользовательскую боль с юнит-экономикой и выбираю рычаг с максимальным эффектом.</p>
+          <p class="lang-en">I decompose the funnel from the business goal, connect user pain to unit economics and choose the highest-impact lever.</p>
+        </article>
+        <article class="value-card reveal">
+          <span class="card-number">02</span>
+          <div class="value-icon">⌁</div>
+          <h3 class="lang-ru">Строю систему, а не костыль</h3>
+          <h3 class="lang-en">Build systems, not patches</h3>
+          <p class="lang-ru">Проектирую end-to-end процесс, продукт и ownership так, чтобы результат масштабировался и продолжал работать без ручного контроля.</p>
+          <p class="lang-en">I design the end-to-end process, product and ownership so results scale and keep working without manual control.</p>
+        </article>
+        <article class="value-card reveal">
+          <span class="card-number">03</span>
+          <div class="value-icon">✦</div>
+          <h3 class="lang-ru">Превращаю AI в экономику</h3>
+          <h3 class="lang-en">Turn AI into economics</h3>
+          <p class="lang-ru">Не «добавляю AI», а убираю дорогие циклы: исследование, контент, коммуникации, контроль и принятие решений.</p>
+          <p class="lang-en">I do not merely “add AI.” I remove expensive loops across research, content, communication, control and decisions.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section cases-section" id="cases">
+      <div class="shell">
+        <div class="section-intro section-intro-wide reveal">
+          <span class="section-kicker">02 / SELECTED WORK</span>
+          <h2 class="lang-ru">Кейсы, в которых продукт меняет сам способ работы бизнеса</h2>
+          <h2 class="lang-en">Cases where the product changes how the business operates</h2>
+          <p class="lang-ru">Не демо и не набор концептов — системы, которые соединяют реальную операционку, данные и технологии.</p>
+          <p class="lang-en">Not demos or isolated concepts — systems that connect real operations, data and technology.</p>
+        </div>
+
+        <div class="cases">
+          <article class="case case-featured reveal">
+            <div class="case-index">
+              <span>CASE 01</span>
+              <span>2023 — NOW</span>
+            </div>
+            <div class="case-title">
+              <div class="case-mark case-mark-cyber" aria-hidden="true">CS</div>
+              <div>
+                <p class="case-overline">CYBERSELLER</p>
+                <h3 class="lang-ru">Операционная система для продавца на маркетплейсах</h3>
+                <h3 class="lang-en">An operating system for marketplace sellers</h3>
+              </div>
+            </div>
+            <div class="case-body">
+              <div class="case-story">
+                <div class="case-block">
+                  <span class="case-label lang-ru">Контекст</span><span class="case-label lang-en">Context</span>
+                  <p class="lang-ru">Разрозненные процессы контента, цен, продвижения, аналитики и коммуникаций не позволяли управлять сотнями тысяч операций как единым продуктом. CyberSeller объединил их и вышел в топ‑1 сервисов для маркетплейсов СНГ.</p>
+                  <p class="lang-en">Fragmented content, pricing, promotion, analytics and communication workflows made it impossible to manage hundreds of thousands of operations as one product. CyberSeller unified them and reached #1 among CIS marketplace platforms.</p>
+                </div>
+                <div class="case-block">
+                  <span class="case-label lang-ru">Мой вклад</span><span class="case-label lang-en">My role</span>
+                  <p class="lang-ru">Владею продуктом end-to-end: стратегия, discovery, roadmap, бюджет, команда, метрики и релизы. Вырастил команду с 3 до 15 человек и перевёл её на самоорганизацию в Agile/Scrum.</p>
+                  <p class="lang-en">I own the product end-to-end: strategy, discovery, roadmap, budget, team, metrics and releases. I grew the team from 3 to 15 and moved it to Agile/Scrum self-organization.</p>
+                </div>
+              </div>
+              <div class="case-impact">
+                <span class="case-label lang-ru">Измеримый эффект</span><span class="case-label lang-en">Measured impact</span>
+                <ul>
+                  <li><strong>&gt;70%</strong><span class="lang-ru">отзывов и вопросов обрабатываются AI</span><span class="lang-en">reviews and Q&amp;A handled by AI</span></li>
+                  <li><strong>−50%</strong><span class="lang-ru">время реакции на коммуникации</span><span class="lang-en">response time for communications</span></li>
+                  <li><strong>−70%</strong><span class="lang-ru">TTM благодаря пайплайну «фото → SEO»</span><span class="lang-en">TTM via the “photo → SEO” pipeline</span></li>
+                  <li><strong>+150%</strong><span class="lang-ru">ADROI, кампаний стало в 4 раза больше</span><span class="lang-en">ADROI, with 4× more campaigns</span></li>
+                  <li><strong>−40%</strong><span class="lang-ru">время ценовых процессов</span><span class="lang-en">pricing workflow time</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="case-footer">
+              <span>Product Strategy</span><span>AI / NLP</span><span>Dynamic Pricing</span><span>Growth</span><span>DS / ML</span><span>Platform</span>
+            </div>
+          </article>
+
+          <article class="case reveal">
+            <div class="case-index">
+              <span>CASE 02</span>
+              <span>2026 — NOW</span>
+            </div>
+            <div class="case-title">
+              <div class="case-mark case-mark-lab" aria-hidden="true">R&amp;D</div>
+              <div>
+                <p class="case-overline">BRAND × DATA × AI</p>
+                <h3 class="lang-ru">R&amp;D‑контур: проверить товар до дорогой закупки</h3>
+                <h3 class="lang-en">R&amp;D loop: validate a product before expensive procurement</h3>
+              </div>
+            </div>
+            <div class="case-body">
+              <div class="case-story">
+                <div class="case-block">
+                  <span class="case-label lang-ru">Инновация</span><span class="case-label lang-en">Innovation</span>
+                  <p class="lang-ru">Для нового юрлица и бренда соединил исследование спроса, сезонность и юнит-экономику с AI-дизайном обуви и CTR-тестами. Команда может исследовать нишу, создать коммерческие вариации модели и сравнить спрос ещё до производства.</p>
+                  <p class="lang-en">For a new legal entity and brand, I connected demand research, seasonality and unit economics with AI footwear design and CTR testing. The team can research a niche, create commercial model variants and compare demand before production.</p>
+                </div>
+                <div class="case-block">
+                  <span class="case-label lang-ru">Система</span><span class="case-label lang-en">System</span>
+                  <p class="lang-ru">DataLab агрегирует WB, Ozon и MPStats; ShoeLab превращает исходник в студийный контент, редизайн или новый гибрид; CTR‑контур сравнивает гипотезы. Дальше — карточка, экспорт на Ozon и решение о закупке.</p>
+                  <p class="lang-en">DataLab aggregates WB, Ozon and MPStats; ShoeLab turns a source image into studio content, a redesign or a new hybrid; the CTR loop compares hypotheses. Then comes the listing, Ozon export and procurement decision.</p>
+                </div>
+              </div>
+              <div class="case-impact case-impact-narrative">
+                <span class="case-label lang-ru">Что это меняет</span><span class="case-label lang-en">What it changes</span>
+                <p class="impact-quote lang-ru">«Покупать не потому, что модель нравится команде, а потому что данные подтверждают коммерческий потенциал».</p>
+                <p class="impact-quote lang-en">“Buy not because the team likes the model, but because data validates its commercial potential.”</p>
+                <div class="mini-flow" aria-label="Product research flow">
+                  <span>Demand</span><i>→</i><span>Design</span><i>→</i><span>CTR</span><i>→</i><span>Buy</span>
+                </div>
+              </div>
+            </div>
+            <div class="case-footer">
+              <span>DataLab</span><span>ShoeLab</span><span>Computer Vision</span><span>GenAI</span><span>Experimentation</span><span>Unit Economics</span>
+            </div>
+          </article>
+
+          <article class="case reveal">
+            <div class="case-index">
+              <span>CASE 03</span>
+              <span>PRODUCT OPS</span>
+            </div>
+            <div class="case-title">
+              <div class="case-mark case-mark-ops" aria-hidden="true">OS</div>
+              <div>
+                <p class="case-overline">KNOWLEDGE × EXECUTION</p>
+                <h3 class="lang-ru">AI‑контур управления: от разговора до выполненной задачи</h3>
+                <h3 class="lang-en">AI management loop: from conversation to completed task</h3>
+              </div>
+            </div>
+            <div class="case-body">
+              <div class="case-story">
+                <div class="case-block">
+                  <span class="case-label lang-ru">Проблема</span><span class="case-label lang-en">Problem</span>
+                  <p class="lang-ru">Решения живут во встречах, задачи — в Bitrix24, знания — в документах. Контекст теряется, а руководитель становится ручным маршрутизатором информации.</p>
+                  <p class="lang-en">Decisions live in meetings, tasks in Bitrix24 and knowledge in documents. Context gets lost and the leader becomes a manual information router.</p>
+                </div>
+                <div class="case-block">
+                  <span class="case-label lang-ru">Решение</span><span class="case-label lang-en">Solution</span>
+                  <p class="lang-ru">Построил связку Obsidian ↔ Bitrix24 ↔ LLM: синхронизация задач и чатов, авто-сводки проектов, подготовка встреч, intelligent routing и граф знаний. Это персональная Product OS, которая удерживает контекст и ускоряет решения.</p>
+                  <p class="lang-en">I built an Obsidian ↔ Bitrix24 ↔ LLM system: task and chat sync, automatic project summaries, meeting preparation, intelligent routing and a knowledge graph. It is a personal Product OS that retains context and speeds decisions.</p>
+                </div>
+              </div>
+              <div class="case-impact case-impact-narrative">
+                <span class="case-label lang-ru">Принцип</span><span class="case-label lang-en">Principle</span>
+                <p class="impact-quote lang-ru">Информация должна сама попадать к нужному человеку — вместе с контекстом, решением и следующим действием.</p>
+                <p class="impact-quote lang-en">Information should reach the right person by itself — with context, decision and next action attached.</p>
+              </div>
+            </div>
+            <div class="case-footer">
+              <span>Product Ops</span><span>LLM Agents</span><span>Knowledge Graph</span><span>Bitrix24</span><span>Automation</span>
+            </div>
+          </article>
+
+          <article class="case case-compact reveal">
+            <div class="case-index">
+              <span>CASE 04</span>
+              <span>2017 — 2022</span>
+            </div>
+            <div class="case-title">
+              <div class="case-mark case-mark-scale" aria-hidden="true">×6</div>
+              <div>
+                <p class="case-overline">SCALE &amp; ENTREPRENEURSHIP</p>
+                <h3 class="lang-ru">Масштаб, который продолжает работать после передачи</h3>
+                <h3 class="lang-en">Scale that keeps working after the handoff</h3>
+              </div>
+            </div>
+            <div class="compact-results">
+              <div><strong>600 000</strong><span class="lang-ru">SKU выведено на маркетплейсы для 21vek</span><span class="lang-en">SKUs launched on marketplaces for 21vek</span></div>
+              <div><strong>6</strong><span class="lang-ru">складов переведено на новый процесс отбора</span><span class="lang-en">warehouses moved to a new picking process</span></div>
+              <div><strong>2</strong><span class="lang-ru">новых для СНГ продукта импортировано с кратным снижением пошлины</span><span class="lang-en">CIS-first products imported with a multi-fold tariff cut</span></div>
+              <div><strong>∞</strong><span class="lang-ru">обе системы работают и развиваются по сей день</span><span class="lang-en">both systems still operate and evolve today</span></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="approach">
+      <div class="section-intro reveal">
+        <span class="section-kicker">03 / OPERATING MODEL</span>
+        <h2 class="lang-ru">Мой рабочий цикл — от неопределённости к воспроизводимому результату</h2>
+        <h2 class="lang-en">My operating loop turns ambiguity into repeatable outcomes</h2>
+      </div>
+
+      <div class="loop reveal">
+        <article><span>01</span><strong class="lang-ru">Увидеть систему</strong><strong class="lang-en">See the system</strong><p class="lang-ru">Пользователь, деньги, процесс, данные и ограничения.</p><p class="lang-en">User, economics, process, data and constraints.</p></article>
+        <i aria-hidden="true">→</i>
+        <article><span>02</span><strong class="lang-ru">Найти рычаг</strong><strong class="lang-en">Find leverage</strong><p class="lang-ru">Гипотеза, которая меняет ключевую метрику.</p><p class="lang-en">A hypothesis that moves the key metric.</p></article>
+        <i aria-hidden="true">→</i>
+        <article><span>03</span><strong class="lang-ru">Собрать контур</strong><strong class="lang-en">Build the loop</strong><p class="lang-ru">Команда, продукт, ownership и обратная связь.</p><p class="lang-en">Team, product, ownership and feedback.</p></article>
+        <i aria-hidden="true">→</i>
+        <article><span>04</span><strong class="lang-ru">Доказать цифрой</strong><strong class="lang-en">Prove with data</strong><p class="lang-ru">Эксперимент, экономика, масштабирование.</p><p class="lang-en">Experiment, economics and scale.</p></article>
+      </div>
+
+      <div class="more-projects reveal">
+        <div>
+          <span class="section-kicker lang-ru">ДРУГИЕ СИСТЕМЫ</span><span class="section-kicker lang-en">OTHER SYSTEMS</span>
+          <h3 class="lang-ru">Отдельные проекты, один паттерн: убрать ручной хаос</h3>
+          <h3 class="lang-en">Different projects, one pattern: remove manual chaos</h3>
+        </div>
+        <ul>
+          <li><strong class="lang-ru">Департамент бренда и новое юрлицо с нуля</strong><strong class="lang-en">Brand department and new legal entity from zero</strong><span class="lang-ru">команда 15 человек, офис 550 м², стратегия на 3 года, автопланирование продаж и фабрика моделей без подрядчиков</span><span class="lang-en">15-person team, 550 m² office, 3-year strategy, automated sales planning and an in-house model factory</span></li>
+          <li><strong class="lang-ru">РОП‑система</strong><strong class="lang-en">Sales Ops system</strong><span class="lang-ru">единый end-to-end рабочий день специалиста внутри сервиса</span><span class="lang-en">a specialist’s entire end-to-end workday inside one service</span></li>
+          <li><strong class="lang-ru">Развитие отдела продаж</strong><strong class="lang-en">Sales team development</strong><span class="lang-ru">мотивация, связанная с финансовыми целями, и менторинг для роста навыков</span><span class="lang-en">motivation tied to financial goals plus skills mentoring</span></li>
+          <li><strong class="lang-ru">Собственный бизнес на маркетплейсах</strong><strong class="lang-en">Own marketplace business</strong><span class="lang-ru">практический полигон для быстрых продуктовых гипотез</span><span class="lang-en">a hands-on proving ground for rapid product hypotheses</span></li>
+          <li><strong class="lang-ru">Генеративный контент‑конвейер</strong><strong class="lang-en">Generative content pipeline</strong><span class="lang-ru">365 уникальных креативов, контролируемая генерация и интерфейс экспертного ревью</span><span class="lang-en">365 unique creatives, controlled generation and an expert review interface</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section experience-section" id="experience">
+      <div class="shell">
+        <div class="section-intro reveal">
+          <span class="section-kicker">04 / EXPERIENCE</span>
+          <h2 class="lang-ru">Карьерный трек: от операционки к владению продуктом и бизнесом</h2>
+          <h2 class="lang-en">Career path: from operations to product and business ownership</h2>
+          <p class="lang-ru">Каждая следующая роль расширяла зону ответственности: товар → команда → процесс → продукт → P&amp;L.</p>
+          <p class="lang-en">Each role expanded the ownership boundary: product → team → process → platform → P&amp;L.</p>
+        </div>
+
+        <div class="timeline">
+          <article class="timeline-company reveal">
+            <div class="timeline-meta">
+              <span class="company-year">2022 — NOW</span>
+              <h3>ООО «МПТрэйд»</h3>
+              <p class="lang-ru">Топ‑10 продавец Wildberries</p>
+              <p class="lang-en">Top‑10 Wildberries seller</p>
+            </div>
+            <div class="timeline-roles">
+              <details class="role" open>
+                <summary>
+                  <span><strong class="lang-ru">Начальник департамента бренда — Founder &amp; CCO</strong><strong class="lang-en">Head of Brand Department — Founder &amp; CCO</strong><small class="lang-ru">Март 2026 — н.в.</small><small class="lang-en">Mar 2026 — present</small></span>
+                  <i aria-hidden="true"></i>
+                </summary>
+                <div class="role-content">
+                  <p class="lang-ru">Учредил новое юрлицо и строю бренд с нуля: собрал команду 15 человек, запустил офис 550 м² и деятельность по стратегии на 3 года.</p>
+                  <p class="lang-en">Founded a new legal entity and am building the brand from zero: assembled a 15-person team, launched a 550 m² office and operations under a 3-year strategy.</p>
+                  <ul class="lang-ru">
+                    <li>Прошёл путь от организации юрлица и найма до полноценного операционного старта.</li>
+                    <li>Настроил автоматическое планирование продаж и автопродажи на каждом уровне воронки.</li>
+                    <li>Реализовал точки роста: размерная сетка, 5 точек сезона, автогенерация контента, автопродвижение и органический трафик.</li>
+                    <li>Построил силами команды «фабрику моделей и товаров» без внешних подрядчиков.</li>
+                  </ul>
+                  <ul class="lang-en">
+                    <li>Covered the full journey from legal entity setup and hiring to operational launch.</li>
+                    <li>Set up automated sales planning and auto-sales at every funnel level.</li>
+                    <li>Delivered growth levers: size grid, 5 seasonal sales points, content auto-generation, auto-promotion and organic traffic.</li>
+                    <li>Built an in-house “model and product factory” without external contractors.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="role" open>
+                <summary>
+                  <span><strong class="lang-ru">Product Owner — CyberSeller</strong><strong class="lang-en">Product Owner — CyberSeller</strong><small class="lang-ru">Октябрь 2023 — н.в.</small><small class="lang-en">Oct 2023 — present</small></span>
+                  <i aria-hidden="true"></i>
+                </summary>
+                <div class="role-content">
+                  <p class="lang-ru">Развиваю уникальный сервис для маркетплейсов — одно из ключевых конкурентных преимуществ компании.</p>
+                  <p class="lang-en">Building a market-unique marketplace platform — one of the company’s core competitive advantages.</p>
+                  <ul class="lang-ru">
+                    <li>Вырос с командой от 3 до 15 человек; внедрил Agile/Scrum с полной самоорганизацией.</li>
+                    <li>Отвечаю за эффективность бизнеса, roadmap, бюджет, discovery, воронку и гипотезы роста; обеспечиваю кратный рост business value год к году.</li>
+                    <li>Организовал работу на стыке бизнеса, аутсорс-разработки, DS/ML и инженерии без микроменеджмента.</li>
+                    <li>Создал AI-коммуникации, контент-пайплайн, инструменты ценообразования и продвижения.</li>
+                    <li>Закупаю и продаю товары команды для самообеспечения и быстрых проверок гипотез; формирую AI-культуру «агенты для всех».</li>
+                  </ul>
+                  <ul class="lang-en">
+                    <li>Grew with the team from 3 to 15; introduced fully self-organized Agile/Scrum.</li>
+                    <li>Own business efficiency, roadmap, budget, discovery, funnel and growth hypotheses, delivering multiple-fold YoY business value growth.</li>
+                    <li>Connected business, outsourced engineering and DS/ML without micromanagement.</li>
+                    <li>Built AI communications, content pipeline, pricing and promotion tools.</li>
+                    <li>Buy and sell the team’s own products for self-sufficiency and rapid validation; drive an “agents for everyone” AI culture.</li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="role">
+                <summary>
+                  <span><strong class="lang-ru">Начальник отдела продаж</strong><strong class="lang-en">Head of Sales</strong><small class="lang-ru">Апрель 2022 — Октябрь 2023 · 1 год 7 месяцев</small><small class="lang-en">Apr 2022 — Oct 2023 · 1 yr 7 mo</small></span>
+                  <i aria-hidden="true"></i>
+                </summary>
+                <div class="role-content">
+                  <p class="lang-ru">Построил систему работы с товаром, увеличил товарооборот, вывел отдел на стабильный доход и передал преемнику. Процессы продолжают работать без моего участия.</p>
+                  <p class="lang-en">Built the team’s product operating system, increased turnover, stabilized income and handed it to a successor. The processes continue without me.</p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="timeline-company reveal">
+            <div class="timeline-meta">
+              <span class="company-year">2021 — 2022</span>
+              <h3>ООО «Триовист» / 21vek</h3>
+              <p class="lang-ru">Крупнейший e‑commerce Беларуси</p>
+              <p class="lang-en">Belarus’ largest e-commerce player</p>
+            </div>
+            <div class="timeline-roles">
+              <details class="role">
+                <summary>
+                  <span><strong class="lang-ru">Руководитель проекта</strong><strong class="lang-en">Project Lead</strong><small class="lang-ru">Май 2021 — Апрель 2022 · 1 год</small><small class="lang-en">May 2021 — Apr 2022 · 1 yr</small></span>
+                  <i aria-hidden="true"></i>
+                </summary>
+                <div class="role-content">
+                  <p class="lang-ru">Вывел 600 тыс. SKU на маркетплейсы. Разработал систему приоритизации ассортимента и остатков, перестроил отбор товара на 6 складах. Проект работает и развивается по сей день.</p>
+                  <p class="lang-en">Launched 600K SKUs onto marketplaces. Built assortment and inventory prioritization and redesigned picking across 6 warehouses. The project still operates and evolves today.</p>
+                </div>
+              </details>
+            </div>
+          </article>
+
+          <article class="timeline-company reveal">
+            <div class="timeline-meta">
+              <span class="company-year">2017 — 2021</span>
+              <h3>ООО «Орликс»</h3>
+              <p class="lang-ru">Собственный бизнес</p>
+              <p class="lang-en">Own business</p>
+            </div>
+            <div class="timeline-roles">
+              <details class="role">
+                <summary>
+                  <span><strong class="lang-ru">Директор</strong><strong class="lang-en">Director</strong><small class="lang-ru">Октябрь 2017 — Апрель 2021 · 3 года 7 месяцев</small><small class="lang-en">Oct 2017 — Apr 2021 · 3 yrs 7 mo</small></span>
+                  <i aria-hidden="true"></i>
+                </summary>
+                <div class="role-content">
+                  <p class="lang-ru">Наладил импорт двух совершенно новых для СНГ продуктов. Через работу с таможней добился кратного снижения пошлины и кратного роста прибыли год к году. Компания успешно работает сейчас.</p>
+                  <p class="lang-en">Set up import of two products entirely new to the CIS. Through customs work, achieved a multi-fold tariff reduction and multi-fold YoY profit growth. The company still operates successfully.</p>
+                </div>
+              </details>
+              <details class="role">
+                <summary>
+                  <span><strong class="lang-ru">Специалист по работе с маркетплейсом</strong><strong class="lang-en">Marketplace Specialist</strong><small class="lang-ru">Октябрь 2017 — Май 2018 · 8 месяцев</small><small class="lang-en">Oct 2017 — May 2018 · 8 mo</small></span>
+                  <i aria-hidden="true"></i>
+                </summary>
+                <div class="role-content">
+                  <p class="lang-ru">Полностью перевёл товарную матрицу компании из розничных сетей на Wildberries, повысив эффективность продаж.</p>
+                  <p class="lang-en">Moved the company’s entire product matrix from retail chains to Wildberries, improving sales efficiency.</p>
+                </div>
+              </details>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section shell" id="skills">
+      <div class="section-intro reveal">
+        <span class="section-kicker">05 / CAPABILITIES</span>
+        <h2 class="lang-ru">Говорю на языках бизнеса, продукта и технологии</h2>
+        <h2 class="lang-en">Fluent across business, product and technology</h2>
+        <p class="lang-ru">Не заменяю специалистов команды — создаю общий контекст, в котором они принимают сильные решения.</p>
+        <p class="lang-en">I do not replace domain specialists — I create the shared context in which they make stronger decisions.</p>
+      </div>
+
+      <div class="skills-grid">
+        <article class="skill-card reveal">
+          <div class="skill-heading"><span>01</span><h3 class="lang-ru">Продукт и рост</h3><h3 class="lang-en">Product &amp; growth</h3></div>
+          <div class="chips"><span>Vision</span><span>Strategy</span><span>Roadmap</span><span>Discovery</span><span>CustDev</span><span>JTBD</span><span>RICE / ICE</span><span>GTM</span><span>Monetization</span><span>A/B tests</span><span>NSM</span><span>AARRR</span><span>Cohorts</span><span>Retention</span><span>LTV</span><span>Churn</span><span>Stakeholders</span><span>Hiring</span></div>
+        </article>
+        <article class="skill-card reveal">
+          <div class="skill-heading"><span>02</span><h3 class="lang-ru">Данные и технология</h3><h3 class="lang-en">Data &amp; technology</h3></div>
+          <div class="chips"><span>AI / LLM</span><span>NLP</span><span>Computer Vision</span><span>GenAI</span><span>DS/ML collaboration</span><span>Python / pandas</span><span>SQL — basic</span><span>REST API</span><span>Integrations</span><span>BPMN</span><span>Google Apps Script</span><span>Postman</span><span>1C — basic</span></div>
+        </article>
+        <article class="skill-card reveal">
+          <div class="skill-heading"><span>03</span><h3 class="lang-ru">Маркетплейсы</h3><h3 class="lang-en">Marketplaces</h3></div>
+          <div class="chips"><span>Wildberries</span><span>Ozon</span><span>Lamoda</span><span>Yandex Market</span><span>SEO</span><span>Content pipeline</span><span>Media</span><span>ROAS / ROMI / ADROI</span><span>Assortment</span><span>Planning</span><span>Dynamic Pricing</span><span>GMROI</span><span>Seller practice</span></div>
+        </article>
+        <article class="skill-card reveal">
+          <div class="skill-heading"><span>04</span><h3 class="lang-ru">Инструменты</h3><h3 class="lang-en">Toolbox</h3></div>
+          <div class="chips"><span>Jira</span><span>YouTrack</span><span>Trello</span><span>Bitrix24</span><span>Notion</span><span>Confluence</span><span>Obsidian</span><span>Miro</span><span>FigJam</span><span>Figma</span><span>GitHub</span><span>Google Workspace</span><span>Excel</span><span>Photoshop</span><span>Premiere Pro</span><span>XMind</span><span>Яндекс Трекер</span><span>Яндекс Вики</span></div>
+        </article>
+      </div>
+
+      <div class="profile-grid">
+        <article class="profile-card reveal">
+          <span class="section-kicker lang-ru">ЧТО УМЕЮ ЛУЧШЕ ВСЕГО</span><span class="section-kicker lang-en">WHAT I DO BEST</span>
+          <ul class="check-list">
+            <li class="lang-ru">Строить бренды и продукты с нуля: 0→1→n.</li><li class="lang-en">Build brands and products from zero: 0→1→n.</li>
+            <li class="lang-ru">Выстраивать discovery, приоритизацию, планирование и релизы.</li><li class="lang-en">Shape discovery, prioritization, planning and releases.</li>
+            <li class="lang-ru">Расти через метрики, A/B‑тесты, когорты и юнит‑экономику.</li><li class="lang-en">Grow through metrics, A/B tests, cohorts and unit economics.</li>
+            <li class="lang-ru">Работать с DS/ML и инженерией на одном языке.</li><li class="lang-en">Work with DS/ML and engineering in a shared language.</li>
+            <li class="lang-ru">Руководить изменениями и держать ownership за результат.</li><li class="lang-en">Lead change and retain ownership for outcomes.</li>
+          </ul>
+        </article>
+        <article class="profile-card reveal">
+          <span class="section-kicker lang-ru">ПОЧЕМУ ЭТО РАБОТАЕТ</span><span class="section-kicker lang-en">WHY IT WORKS</span>
+          <ul class="check-list">
+            <li class="lang-ru">Глубокий end-to-end опыт на маркетплейсах.</li><li class="lang-en">Deep end-to-end marketplace expertise.</li>
+            <li class="lang-ru">Практичный AI только там, где он даёт измеримый эффект.</li><li class="lang-en">Pragmatic AI only where it creates measurable impact.</li>
+            <li class="lang-ru">Простые интерфейсы и метрики для сложных систем.</li><li class="lang-en">Simple interfaces and metrics for complex systems.</li>
+            <li class="lang-ru">Баланс интересов пользователя и бизнеса.</li><li class="lang-en">Balance between user and business value.</li>
+            <li class="lang-ru">Процессы, которые живут без моего постоянного участия.</li><li class="lang-en">Processes that keep running without my constant presence.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="credentials reveal">
+        <div>
+          <span class="section-kicker lang-ru">ОБРАЗОВАНИЕ</span><span class="section-kicker lang-en">EDUCATION</span>
+          <strong class="lang-ru">БГУ, РФиКТ — Физическая электроника</strong><strong class="lang-en">BSU, Radiophysics &amp; Computer Technologies — Physical Electronics</strong>
+          <small>2017</small>
+          <strong>RS School — JS/FE Pre‑School</strong>
+          <small>2022</small>
+        </div>
+        <div>
+          <span class="section-kicker lang-ru">ЯЗЫКИ</span><span class="section-kicker lang-en">LANGUAGES</span>
+          <strong class="lang-ru">Белорусский — родной</strong><strong class="lang-en">Belarusian — native</strong>
+          <strong class="lang-ru">Русский — C1</strong><strong class="lang-en">Russian — C1</strong>
+          <strong>English — B1</strong>
+        </div>
+        <div>
+          <span class="section-kicker lang-ru">РАБОЧИЙ ФОРМАТ</span><span class="section-kicker lang-en">WORK SETUP</span>
+          <strong class="lang-ru">Минск · GMT+3</strong><strong class="lang-en">Minsk · GMT+3</strong>
+          <strong class="lang-ru">Удалённо / открыт к релокации</strong><strong class="lang-en">Remote / open to relocation</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="shell contact-grid">
+        <div class="contact-copy reveal">
+          <span class="section-kicker">06 / CONTACT</span>
+          <h2 class="lang-ru">Есть сложный продукт, который должен наконец дать результат?</h2>
+          <h2 class="lang-en">Have a complex product that finally needs to deliver?</h2>
+          <p class="lang-ru">Поговорим о задаче, метрике и о том, где находится главный рычаг роста.</p>
+          <p class="lang-en">Let’s talk about the challenge, the metric and where the highest-leverage move is hiding.</p>
+        </div>
+        <div class="contact-actions reveal">
+          <a class="contact-link contact-link-primary" href="mailto:lomon3@gmail.com"><span>lomon3@gmail.com</span><i>↗</i></a>
+          <a class="contact-link" href="https://t.me/ArChernushevich" target="_blank" rel="noopener"><span>Telegram</span><i>↗</i></a>
+          <a class="contact-link" href="tel:+375299380510"><span>+375 (29) 938‑05‑10</span><i>↗</i></a>
+          <button class="contact-link print-button" type="button" id="printButton"><span class="lang-ru">Скачать / распечатать PDF</span><span class="lang-en">Download / print PDF</span><i>↓</i></button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
       <div>
-        <h1 class="name">Артём Чернушевич</h1>
-        <div class="title ru">Founder & CCO · Product Owner · маркетплейсы (WB/Ozon)</div>
-        <div class="title en" style="display:none">Founder & CCO · Product Owner · Marketplaces (WB/Ozon)</div>
-        <div class="sub ru">Руковожу департаментом бренда и продуктом <strong>CyberSeller</strong> в компании из топ‑10 продавцов WB. Отвечаю на вопрос «зачем» на каждом уровне — от отбора товара до автоматизации продаж — и перевожу решения в измеримую эффективность.</div>
-        <div class="sub en" style="display:none">I run the brand department and own <strong>CyberSeller</strong> at a Top‑10 Wildberries seller. I answer "why" at every level — from sourcing to sales automation — and turn decisions into measurable efficiency.</div>
-        <div class="tags ru">
-          <span class="tag">Brand & Category Ownership</span>
-          <span class="tag">Strategy & Roadmap</span>
-          <span class="tag">Discovery · JTBD</span>
-          <span class="tag">Retention · LTV · Churn</span>
-          <span class="tag">A/B Tests · Growth</span>
-          <span class="tag">Алгоритмы продвижения/рекламы</span>
-          <span class="tag">Dynamic Pricing</span>
-          <span class="tag">DS/ML Collaboration</span>
-          <span class="tag">AI (NLP/CV) · GenAI</span>
-          <span class="tag">Python/SQL (баз.)</span>
-        </div>
-        <div class="tags en" style="display:none">
-          <span class="tag">Brand & Category Ownership</span>
-          <span class="tag">Strategy & Roadmap</span>
-          <span class="tag">Discovery · JTBD</span>
-          <span class="tag">Retention · LTV · Churn</span>
-          <span class="tag">A/B Tests · Growth</span>
-          <span class="tag">Promotion/Ads Algorithms</span>
-          <span class="tag">Dynamic Pricing</span>
-          <span class="tag">DS/ML Collaboration</span>
-          <span class="tag">AI (NLP/CV) · GenAI</span>
-          <span class="tag">Python/SQL (basic)</span>
-        </div>
+        <strong>Артём Чернушевич</strong>
+        <span>Product Leader · Founder &amp; CCO</span>
       </div>
-      <div class="aside">
-        <figure class="avatar"><img src="./avatar.jpg" alt="Фото Артёма Чернушевича"></figure>
-        <div class="actions">
-          <button class="btn" onclick="window.print()">Скачать PDF</button>
-          <button class="btn" id="langRu" aria-label="Русский">RU</button>
-          <button class="btn" id="langEn" aria-label="English">EN</button>
-          <button class="btn" id="themeBtn" aria-label="Переключить тему">Тема: <span class="theme">Dark</span></button>
-        </div>
-      </div>
-    </header>
+      <p class="lang-ru">Обновлено 29 июля 2026</p>
+      <p class="lang-en">Updated July 29, 2026</p>
+      <a href="#top"><span class="lang-ru">Наверх</span><span class="lang-en">Back to top</span> ↑</a>
+    </div>
+  </footer>
 
-    <!-- ====== Summary ====== -->
-    <section class="panel">
-      <h2 class="ru"><i class="fa-solid fa-user-tie fa-fw"></i>Обо мне</h2>
-      <h2 class="en" style="display:none"><i class="fa-solid fa-user-tie fa-fw"></i>About</h2>
-      <p class="lead ru">Руковожу департаментом бренда (Founder & CCO) и развиваю продукт <strong>CyberSeller</strong> в компании из топ‑10 продавцов на WB. Мой путь в продукт начался с руководства отделом продаж. Там я понял, что успех кроется не в хаотичных усилиях, а в построении чётких процессов и решениях, основанных на данных.</p>
-      <p class="lead en" style="display:none">I run the brand department (Founder & CCO) and develop the <strong>CyberSeller</strong> platform at a Top‑10 Wildberries seller. My journey into product began in sales leadership. It was there I realized that success isn't about chaotic effort, but about building clear processes and making decisions based on data.</p>
-      <div class="callout ru">Что меня увлекает больше всего: находить неочевидные рычаги роста — в алгоритмах маркетплейсов, в отборе и закупке товара, в автоматизации продаж и продвижения. Я всегда перевожу решения в измеримую эффективность и опираюсь на прозрачные метрики юнит-экономики (GMROI/ADROI).</div>
-      <div class="callout en" style="display:none">What excites me most: finding non-obvious growth levers — in marketplace algorithms, in product sourcing, in sales and promotion automation. I always translate decisions into measurable efficiency, grounded in clear unit-economic metrics like GMROI/ADROI.</div>
-      <div class="tags" style="margin-top:12px">
-        <span class="pill ru">Минск · удалённо (GMT+3) · открыт к релокации</span>
-        <span class="pill en" style="display:none">Minsk · remote (GMT+3) · open to relocation</span>
-        <span class="pill"><a href="mailto:lomon3@gmail.com">lomon3@gmail.com</a></span>
-        <span class="pill"><a href="tel:+375299380510">+375 (29) 938‑05‑10</a></span>
-        <span class="pill"><a href="https://t.me/ArChernushevich" target="_blank">Telegram</a></span>
-      </div>
-    </section>
-
-    <!-- ====== KPI ====== -->
-    <section>
-      <h2 class="ru"><i class="fa-solid fa-chart-line fa-fw"></i>Ключевые результаты</h2>
-      <h2 class="en" style="display:none"><i class="fa-solid fa-chart-line fa-fw"></i>Key Outcomes</h2>
-      <div class="kpis g3 grid">
-        <div class="item"><div class="value">AI&nbsp;&gt;70%</div><div class="label ru">Автоматизировал >70% коммуникаций с клиентами (отзывы, вопросы) с помощью AI.</div><div class="label en" style="display:none">Automated >70% of customer comms (reviews, Q&A) using AI.</div></div>
-        <div class="item"><div class="value">Процесс → результат</div><div class="label ru">Автоматизировал процесс продаж: −50% к времени реакции, сэкономлено ≈15 ч/нед для команды.</div><div class="label en" style="display:none">Automated sales process: −50% response time, saved ≈15 hrs/week for the team.</div></div>
-        <div class="item"><div class="value">TTM −70%</div><div class="label ru">Ускорил запуск новых товаров через единый конвейер для контента.</div><div class="label en" style="display:none">Accelerated new product launches via a unified content pipeline.</div></div>
-        <div class="item"><div class="value">3 → 15</div><div class="label ru">Вырастил команду разработки CyberSeller в 5 раз, сохранив полную самоорганизацию на Agile/Scrum.</div><div class="label en" style="display:none">Grew the CyberSeller dev team 5x while keeping full self-organization on Agile/Scrum.</div></div>
-        <div class="item"><div class="value">+150% ADROI</div><div class="label ru">Добился роста ADROI, внедрив целевое управление рекламой. Увеличил число кампаний в 4 раза.</div><div class="label en" style="display:none">Achieved +150% ADROI with goal-oriented ad management. Scaled campaigns by 4x.</div></div>
-        <div class="item"><div class="value">~40%</div><div class="label ru">На 40% ускорил процессы ценообразования благодаря единой модели юнит-экономики.</div><div class="label en" style="display:none">Sped up pricing workflows by ~40% with a unified unit economics model.</div></div>
-      </div>
-    </section>
-
-    <!-- ====== Projects ====== -->
-    <section class="panel">
-      <h2 class="ru"><i class="fa-solid fa-rocket fa-fw"></i>Ключевые проекты</h2>
-      <h2 class="en" style="display:none"><i class="fa-solid fa-rocket fa-fw"></i>Key Projects</h2>
-      <ul class="ru" style="margin:6px 0 0 18px">
-        <li><strong>Департамент бренда с нуля (2026 — н.в.):</strong> новый подход к отбору и закупке товара, автопланирование продаж, точки роста — размерная сетка, продажи в 5 точках сезона, полная автогенерация контента, автопродвижение.</li>
-        <li><strong>CyberSeller — сервис для работы с маркетплейсами:</strong> контент, цены, продвижение, аналитика, процессы; полный продуктовый цикл.</li>
-        <li><strong>РОП‑система (продукт‑система):</strong> процесс и этапы внутри сервиса, чтобы специалист проводил рабочий день end‑to‑end в одной системе.</li>
-        <li><strong>Собственный бизнес на маркетплейсах:</strong> держу руку на пульсе практики, тестирую гипотезы и подходы.</li>
-        <li><strong>Проект развития отдела продаж:</strong> система мотивации с учётом финансовых целей компании + менторинг для роста скиллов.</li>
-      </ul>
-      <ul class="en" style="display:none; margin:6px 0 0 18px">
-        <li><strong>Brand department, built from zero (2026 — present):</strong> a new approach to product sourcing and purchasing, automated sales planning, growth levers — size grid, 5 seasonal sales points, full content auto-generation, auto-promotion.</li>
-        <li><strong>CyberSeller — marketplace operations platform:</strong> content, pricing, promotion, analytics, processes; full product lifecycle.</li>
-        <li><strong>Sales‑Ops (RoP) System:</strong> process & stage orchestration so specialists spend their day end‑to‑end in one system.</li>
-        <li><strong>Own marketplace business:</strong> hands‑on practice to test hypotheses and approaches.</li>
-        <li><strong>Sales team growth program:</strong> motivation system aligned with company goals + mentoring.</li>
-      </ul>
-    </section>
-
-    <!-- ====== Strengths ====== -->
-    <section class="grid g2">
-      <div class="panel">
-        <h2 class="ru"><i class="fa-solid fa-bullseye fa-fw"></i>Что хочу и что умею</h2>
-        <h2 class="en" style="display:none"><i class="fa-solid fa-bullseye fa-fw"></i>What I Want & Do Best</h2>
-        <ul class="ru" style="margin:6px 0 0 18px">
-          <li>Строить бренды и продукты с нуля: от отбора товара до масштабирования (0→1→n).</li>
-          <li>Выстраивать процессы: discovery, приоритизация, планирование, релизы.</li>
-          <li>Рост через данные: метрики, A/B‑тесты, когорты, ретеншн/LTV.</li>
-          <li>Работать с DS/ML‑командами и инженерией, говорить на «одном языке».</li>
-          <li>Руководить изменениями, держать прозрачный план и ответственность за результат.</li>
-        </ul>
-        <ul class="en" style="display:none; margin:6px 0 0 18px">
-          <li>Build brands and products from zero: sourcing to scale (0→1→n).</li>
-          <li>Shape processes: discovery, prioritization, planning, releases.</li>
-          <li>Drive growth with data: metrics, A/B, cohorts, retention/LTV.</li>
-          <li>Work closely with DS/ML & engineering; speak the same language.</li>
-          <li>Lead change with clarity, transparency and ownership.</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <h2 class="ru"><i class="fa-solid fa-check-double fa-fw"></i>Почему это сработает</h2>
-        <h2 class="en" style="display:none"><i class="fa-solid fa-check-double fa-fw"></i>Why It Works</h2>
-        <ul class="ru" style="margin:6px 0 0 18px">
-          <li>Глубокий опыт на маркетплейсах: знаю процессы end‑to‑end и учу лучших практик.</li>
-          <li>Практичный AI и автоматизация там, где это даёт измеримый эффект.</li>
-          <li>Простые решения для сложных систем: понятные интерфейсы, ясные метрики.</li>
-          <li>Умею согласовывать интересы бизнеса и пользователей.</li>
-        </ul>
-        <ul class="en" style="display:none; margin:6px 0 0 18px">
-          <li>Deep marketplace expertise: end‑to‑end processes; training others.</li>
-          <li>Pragmatic AI & automation where it truly moves the needle.</li>
-          <li>Simple solutions for complex systems: clear UX, clear metrics.</li>
-          <li>Balance user value and business impact.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- ====== Skills ====== -->
-    <section class="grid g2">
-      <div class="panel">
-        <h2 class="ru"><i class="fa-solid fa-lightbulb fa-fw"></i>Продукт</h2><h2 class="en" style="display:none"><i class="fa-solid fa-lightbulb fa-fw"></i>Product</h2>
-        <div class="tags">
-          <span class="tag">Vision · Strategy · Roadmap</span>
-          <span class="tag">Discovery · CustDev · JTBD</span>
-          <span class="tag">Prioritization (RICE/ICE)</span>
-          <span class="tag">GTM · Monetization</span>
-          <span class="tag">A/B · Hypothesis → Metric</span>
-          <span class="tag">NSM · AARRR · Cohorts</span>
-          <span class="tag">Retention · LTV · Churn</span>
-          <span class="tag">Stakeholders · Hiring</span>
-        </div>
-      </div>
-      <div class="panel">
-        <h2 class="ru"><i class="fa-solid fa-code fa-fw"></i>Технологии и Данные</h2><h2 class="en" style="display:none"><i class="fa-solid fa-code fa-fw"></i>Tech & Data</h2>
-        <div class="tags">
-          <span class="tag">Python (pandas, scripts)</span>
-          <span class="tag">SQL (базовый)</span>
-          <span class="tag">REST API · интеграции</span>
-          <span class="tag">LLM/NLP · CV · GenAI</span>
-          <span class="tag">Google Sheets/Excel</span>
-          <span class="tag">Figma/Photoshop/Premiere Pro</span>
-          <span class="tag">BPMN · 1С (баз.)</span>
-          <span class="tag">Jira · YouTrack · Miro</span>
-        </div>
-      </div>
-      <div class="panel">
-        <h2 class="ru"><i class="fa-solid fa-store fa-fw"></i>Домен: маркетплейсы / e‑commerce</h2><h2 class="en" style="display:none"><i class="fa-solid fa-store fa-fw"></i>Domain: Marketplaces / e‑commerce</h2>
-        <div class="tags ru">
-          <span class="tag">WB · Ozon · Lamoda · YM</span>
-          <span class="tag">SEO/индексация карточек</span>
-          <span class="tag">Контент‑пайплайн/Медиа</span>
-          <span class="tag">Реклама · ROAS/ROMI/ADROI</span>
-          <span class="tag">Ассортимент · планирование</span>
-          <span class="tag">Dynamic Pricing</span>
-          <span class="tag">Практика: продавец и внутренние инструменты</span>
-          <span class="tag">Менторинг/обучение методологиям</span>
-        </div>
-        <div class="tags en" style="display:none">
-          <span class="tag">WB · Ozon · Lamoda · YM</span>
-          <span class="tag">SEO / product page indexing</span>
-          <span class="tag">Content pipeline / Media</span>
-          <span class="tag">Advertising · ROAS/ROMI/ADROI</span>
-          <span class="tag">Assortment · planning</span>
-          <span class="tag">Dynamic Pricing</span>
-          <span class="tag">Practice: seller & internal tooling</span>
-          <span class="tag">Mentoring / methodology training</span>
-        </div>
-      </div>
-      <div class="panel">
-        <h2 class="ru"><i class="fa-solid fa-language fa-fw"></i>Языки</h2><h2 class="en" style="display:none"><i class="fa-solid fa-language fa-fw"></i>Languages</h2>
-        <div class="tags ru">
-          <span class="tag">Русский — C1</span>
-          <span class="tag">Белорусский — родной</span>
-          <span class="tag">English — B1</span>
-        </div>
-        <div class="tags en" style="display:none">
-          <span class="tag">Russian — C1</span>
-          <span class="tag">Belarusian — native</span>
-          <span class="tag">English — B1</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- ====== Experience ====== -->
-    <section>
-      <h2 class="ru"><i class="fa-solid fa-briefcase fa-fw"></i>Опыт</h2><h2 class="en" style="display:none"><i class="fa-solid fa-briefcase fa-fw"></i>Experience</h2>
-      <div class="companies">
-
-        <!-- МПТрэйд -->
-        <article class="company">
-          <div class="company-head">
-            <div class="company-name">ООО «МПТрэйд»</div>
-            <div class="company-period ru">Апр 2022 — н.в. · 4 года 4 месяца</div>
-            <div class="company-period en" style="display:none">Apr 2022 — present · 4 yrs 4 mo</div>
-          </div>
-          <div class="roles">
-
-            <div class="role-entry">
-              <div class="role-top">
-                <span class="role-title ru">Начальник департамента бренда — Founder & CCO</span>
-                <span class="role-title en" style="display:none">Head of Brand Department — Founder & CCO</span>
-                <span class="role-period">Март 2026 — н.в.</span>
-              </div>
-              <p class="role-headline ru">Строю бренд с нуля: новый подход к отбору и закупке товара, автоматизация продаж на каждом уровне воронки.</p>
-              <p class="role-headline en" style="display:none">Building a brand from zero: a new approach to product sourcing and purchasing, sales automation at every level of the funnel.</p>
-              <details class="role-details" open>
-                <summary class="ru">Подробнее</summary>
-                <summary class="en" style="display:none">Details</summary>
-                <ul class="ru">
-                  <li>Внедрил принципиально новый подход к поиску и отбору товара под закупку, планированию поставок и продаж.</li>
-                  <li>Настроил автоматическое планирование продаж и автопродажи на каждом уровне воронки.</li>
-                  <li>Нашёл и реализовал точки роста: размерная сетка, продажи в 5 точках сезона, полный переход на автогенерацию контента, автопродвижение, стимулирование органического трафика.</li>
-                  <li>Построил «фабрику моделей и товаров» силами команды — производство карточек и вариаций без внешних подрядчиков.</li>
-                </ul>
-                <ul class="en" style="display:none">
-                  <li>Introduced a fundamentally new approach to sourcing and selecting products for purchase, and to planning deliveries and sales.</li>
-                  <li>Set up automated sales planning and auto-sales at every level of the funnel.</li>
-                  <li>Found and executed growth levers: size grid, sales across 5 seasonal points, full transition to content auto-generation, auto-promotion, organic traffic growth.</li>
-                  <li>Built a "model/product factory" run entirely by the team — in-house production of listings and variants, no external contractors.</li>
-                </ul>
-              </details>
-            </div>
-
-            <div class="role-entry">
-              <div class="role-top">
-                <span class="role-title ru">Менеджер по продукту (PO) — сервис «CyberSeller»</span>
-                <span class="role-title en" style="display:none">Product Manager / PO — CyberSeller platform</span>
-                <span class="role-period">Окт 2023 — н.в.</span>
-              </div>
-              <p class="role-headline ru">Вырастил команду CyberSeller с 3 до 15 человек и вывел сервис в топ‑1 на рынке МП СНГ.</p>
-              <p class="role-headline en" style="display:none">Grew the CyberSeller team from 3 to 15 and made it the #1 platform on the CIS marketplace-tooling market.</p>
-              <details class="role-details">
-                <summary class="ru">Подробнее</summary>
-                <summary class="en" style="display:none">Details</summary>
-                <ul class="ru">
-                  <li>Уникальный для рынка сервис — одно из ключевых конкурентных преимуществ компании (топ‑1 среди сервисов для маркетплейсов в СНГ).</li>
-                  <li>Перевёл команду на Agile Scrum с полной самоорганизацией и автопилотом.</li>
-                  <li>Анализирую эффективность бизнеса, обеспечиваю кратный рост value бизнеса год к году.</li>
-                  <li>Работаю на стыке бизнеса и аутсорс‑разработки: команда доставляет фичи с учётом бизнес‑запроса и моего опыта, без ручного управления.</li>
-                  <li>Понимаю каждый этап воронки продукта, считаю её от цели и детализирую, генерирую гипотезы роста.</li>
-                  <li>Планирую и веду бюджет команды; закупаю и продаю товары команды для самообеспечения и быстрого тестирования гипотез.</li>
-                  <li>Внедрил AI‑систему для ответов на отзывы и вопросы — более 70% коммуникаций, вдвое короче время реакции.</li>
-                  <li>Организовал единый контент‑пайплайн (от фото до SEO) — ускорил вывод новых товаров на 70%.</li>
-                  <li>Разработал инструменты ценообразования и продвижения — ADROI +150%, ценовые процессы быстрее на 40%.</li>
-                  <li>Формирую AI‑культуру в компании: агенты для всех.</li>
-                </ul>
-                <ul class="en" style="display:none">
-                  <li>A market-unique service — one of the company's key competitive advantages (#1 among marketplace tooling services in the CIS).</li>
-                  <li>Moved the team to Agile Scrum with full self-organization and autopilot.</li>
-                  <li>Analyze business efficiency, deliver multiple-fold YoY growth in business value.</li>
-                  <li>Sit at the intersection of business and outsourced development: the team ships features aligned with business needs and my domain experience, without manual oversight.</li>
-                  <li>Understand every stage of the product funnel; model it from the goal down and generate growth hypotheses.</li>
-                  <li>Plan and manage the team budget; buy and sell the team's own products for self-sufficiency and fast hypothesis testing.</li>
-                  <li>Implemented an AI system for reviews and Q&A — over 70% of communications, halving response time.</li>
-                  <li>Built a unified content pipeline (photos to SEO) — cut new-product time-to-market by 70%.</li>
-                  <li>Built pricing and promotion tools — +150% ADROI, 40% faster pricing workflow.</li>
-                  <li>Driving an AI-first culture across the company: agents for everyone.</li>
-                </ul>
-              </details>
-            </div>
-
-            <div class="role-entry">
-              <div class="role-top">
-                <span class="role-title ru">Начальник отдела продаж</span>
-                <span class="role-title en" style="display:none">Head of Sales</span>
-                <span class="role-period ru">Апр 2022 — Окт 2023 · 1 год 7 месяцев</span>
-                <span class="role-period en" style="display:none">Apr 2022 — Oct 2023 · 1 yr 7 mo</span>
-              </div>
-              <p class="role-headline ru">Построил систему работы с товаром в отделе, вывел оборот на стабильный уровень и передал проект.</p>
-              <p class="role-headline en" style="display:none">Built a systematic product workflow for the department, brought turnover to a stable level, and handed the project off.</p>
-              <details class="role-details">
-                <summary class="ru">Подробнее</summary>
-                <summary class="en" style="display:none">Details</summary>
-                <ul class="ru">
-                  <li>Выстроил систему работы с товарами в команде продаж.</li>
-                  <li>Увеличил товарооборот, вывел отдел на стабильный уровень дохода.</li>
-                  <li>Передал отдел преемнику — процессы продолжают работать без моего участия.</li>
-                </ul>
-                <ul class="en" style="display:none">
-                  <li>Built a systematic product workflow for the sales team.</li>
-                  <li>Increased turnover, brought the department to a stable income level.</li>
-                  <li>Handed the department to a successor — processes still run without me.</li>
-                </ul>
-              </details>
-            </div>
-
-          </div>
-        </article>
-
-        <!-- Триовист -->
-        <article class="company">
-          <div class="company-head">
-            <div class="company-name">ООО «Триовист» / 21vek</div>
-            <div class="company-period ru">Май 2021 — Апр 2022 · 1 год</div>
-            <div class="company-period en" style="display:none">May 2021 — Apr 2022 · 1 yr</div>
-          </div>
-          <div class="roles">
-            <div class="role-entry">
-              <div class="role-top">
-                <span class="role-title ru">Руководитель проекта</span>
-                <span class="role-title en" style="display:none">Project Lead</span>
-                <span class="role-period ru">Май 2021 — Апр 2022</span>
-                <span class="role-period en" style="display:none">May 2021 — Apr 2022</span>
-              </div>
-              <p class="role-headline ru">Вывел 600 тыс. SKU на маркетплейсы и перестроил отбор товара на 6 складах.</p>
-              <p class="role-headline en" style="display:none">Launched 600K SKUs onto marketplaces and rebuilt product picking across 6 warehouses.</p>
-              <details class="role-details">
-                <summary class="ru">Подробнее</summary>
-                <summary class="en" style="display:none">Details</summary>
-                <ul class="ru">
-                  <li>Разработал систему приоритизации и управления ассортиментом и остатком.</li>
-                  <li>Изменил процесс отборки товара на 6 складах под передачу на маркетплейсы.</li>
-                  <li>Проект работает и развивается по сей день.</li>
-                </ul>
-                <ul class="en" style="display:none">
-                  <li>Built a prioritization system for assortment and stock management.</li>
-                  <li>Redesigned the product-picking process across 6 warehouses for marketplace handoff.</li>
-                  <li>The project is still running and evolving today.</li>
-                </ul>
-              </details>
-            </div>
-          </div>
-        </article>
-
-        <!-- Орликс -->
-        <article class="company">
-          <div class="company-head">
-            <div class="company-name">ООО «Орликс»</div>
-            <div class="company-period ru">Окт 2017 — Апр 2021 · 3 года 7 месяцев</div>
-            <div class="company-period en" style="display:none">Oct 2017 — Apr 2021 · 3 yrs 7 mo</div>
-          </div>
-          <div class="roles">
-
-            <div class="role-entry">
-              <div class="role-top">
-                <span class="role-title ru">Директор</span>
-                <span class="role-title en" style="display:none">Director</span>
-                <span class="role-period ru">Окт 2017 — Апр 2021</span>
-                <span class="role-period en" style="display:none">Oct 2017 — Apr 2021</span>
-              </div>
-              <p class="role-headline ru">Импортировал два новых для СНГ продукта и кратно нарастил прибыль год к году.</p>
-              <p class="role-headline en" style="display:none">Imported two products entirely new to the CIS market and grew profit multiple times over year over year.</p>
-              <details class="role-details">
-                <summary class="ru">Подробнее</summary>
-                <summary class="en" style="display:none">Details</summary>
-                <ul class="ru">
-                  <li>Наладил импорт двух совершенно новых для рынка СНГ продуктов, включая постоянные споры с таможней и кратное снижение пошлины.</li>
-                  <li>Добился кратного роста прибыли от года к году.</li>
-                  <li>Компания успешно работает и сейчас.</li>
-                </ul>
-                <ul class="en" style="display:none">
-                  <li>Set up import of two products completely new to the CIS market, including ongoing customs disputes that led to a multi-fold tariff cut.</li>
-                  <li>Achieved multiple-fold YoY profit growth.</li>
-                  <li>The company still operates successfully today.</li>
-                </ul>
-              </details>
-            </div>
-
-            <div class="role-entry">
-              <div class="role-top">
-                <span class="role-title ru">Специалист по работе с маркетплейсом</span>
-                <span class="role-title en" style="display:none">Marketplace Specialist</span>
-                <span class="role-period ru">Окт 2017 — Май 2018 · 8 месяцев</span>
-                <span class="role-period en" style="display:none">Oct 2017 — May 2018 · 8 mo</span>
-              </div>
-              <p class="role-headline ru">Перевёл всю товарную матрицу из розничных сетей на Wildberries с ростом эффективности.</p>
-              <p class="role-headline en" style="display:none">Migrated the entire product matrix from retail chains to Wildberries with a measurable efficiency gain.</p>
-              <details class="role-details">
-                <summary class="ru">Подробнее</summary>
-                <summary class="en" style="display:none">Details</summary>
-                <ul class="ru">
-                  <li>Полностью перевёл ассортимент компании из розничных сетей на маркетплейс Wildberries, повысив эффективность продаж.</li>
-                </ul>
-                <ul class="en" style="display:none">
-                  <li>Fully migrated the company's assortment from retail chains to Wildberries, improving sales efficiency.</li>
-                </ul>
-              </details>
-            </div>
-
-          </div>
-        </article>
-
-      </div>
-    </section>
-
-    <!-- ====== Education & Tools ====== -->
-    <section class="grid g2">
-      <div class="panel">
-        <h2 class="ru"><i class="fa-solid fa-graduation-cap fa-fw"></i>Образование</h2><h2 class="en" style="display:none"><i class="fa-solid fa-graduation-cap fa-fw"></i>Education</h2>
-        <ul class="ru">
-          <li>БГУ, РФиКТ — Физическая электроника, 2017.</li>
-          <li>RS School — JS/FE Pre‑School, 2022.</li>
-        </ul>
-        <ul class="en" style="display:none">
-          <li>Belarusian State University (BSU), Faculty of Radiophysics & Computer Technologies — Physical Electronics, 2017.</li>
-          <li>RS School — JS/FE Pre‑School, 2022.</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <h2 class="ru"><i class="fa-solid fa-toolbox fa-fw"></i>Инструменты</h2><h2 class="en" style="display:none"><i class="fa-solid fa-toolbox fa-fw"></i>Tools</h2>
-        <div class="tags">
-          <span class="tag">Jira/YouTrack/Trello</span>
-          <span class="tag">Notion/Confluence</span>
-          <span class="tag">Miro/FigJam</span>
-          <span class="tag">Figma</span>
-          <span class="tag">GitHub</span>
-          <span class="tag">Google Workspace</span>
-          <span class="tag">Google Apps Script</span>
-          <span class="tag">Postman</span>
-          <span class="tag">Bitrix24 (автоматизация процессов)</span>
-          <span class="tag">Яндекс Трекер</span>
-          <span class="tag">Яндекс Вики</span>
-          <span class="tag">Photoshop</span>
-          <span class="tag">Premiere Pro</span>
-          <span class="tag">Xmind</span>
-          <span class="tag">1С</span>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <div class="ru">Обновлено: 29 июля 2026</div>
-      <div class="en" style="display:none">Updated: Jul 29, 2026</div>
-      <div>© Артём Чернушевич</div>
-    </footer>
-  </div>
-
-  <script>
-    // theme toggle
-    const themeBtn=document.getElementById('themeBtn');
-    const themeEl=document.querySelector('.theme');
-    const root=document.documentElement; const savedTheme=localStorage.getItem('theme');
-    if(savedTheme){root.setAttribute('data-theme',savedTheme); if(themeEl) themeEl.textContent=savedTheme==='dark'?'Dark':'Light';}
-    themeBtn&&themeBtn.addEventListener('click',()=>{const now=root.getAttribute('data-theme')==='dark'?'light':'dark';root.setAttribute('data-theme',now); if(themeEl) themeEl.textContent=now==='dark'?'Dark':'Light';localStorage.setItem('theme',now)});
-
-    // language toggle
-    const wrap=document.querySelector('.wrap');
-    const langRuBtn=document.getElementById('langRu');
-    const langEnBtn=document.getElementById('langEn');
-    const applyLang=(lang)=>{
-      wrap.setAttribute('data-lang',lang);
-      document.querySelectorAll('.ru').forEach(el=>{el.style.display= lang==='ru' ? '' : 'none';});
-      document.querySelectorAll('.en').forEach(el=>{el.style.display= lang==='en' ? '' : 'none';});
-      localStorage.setItem('lang',lang);
-      document.documentElement.lang = lang;
-      langRuBtn.classList.toggle('active', lang === 'ru');
-      langEnBtn.classList.toggle('active', lang === 'en');
-    };
-    const savedLang=localStorage.getItem('lang')||'ru';
-    applyLang(savedLang);
-    langRuBtn.addEventListener('click',()=>applyLang('ru'));
-    langEnBtn.addEventListener('click',()=>applyLang('en'));
-
-    // expand all role details when printing, restore after
-    (function(){
-      const details=[...document.querySelectorAll('details.role-details')];
-      window.addEventListener('beforeprint',()=>{details.forEach(d=>{d.dataset.wasOpen=d.open?'1':'0'; d.open=true;});});
-      window.addEventListener('afterprint',()=>{details.forEach(d=>{d.open=d.dataset.wasOpen==='1';});});
-    })();
-
-    // scroll progress bar
-    (function(){
-      const bar=document.getElementById('progress');
-      if(!bar) return;
-      const update=()=>{
-        const max=document.documentElement.scrollHeight - window.innerHeight;
-        const y=window.pageYOffset || document.documentElement.scrollTop || 0;
-        if(max<=0){bar.style.opacity='0'; bar.style.width='0%'; return;}
-        const p=Math.min(1, Math.max(0, y/max));
-        bar.style.opacity='1';
-        bar.style.width=(p*100).toFixed(2)+'%';
-      };
-      window.addEventListener('scroll',update,{passive:true});
-      window.addEventListener('resize',update);
-      update();
-    })();
-  </script>
+  <script src="./script.js"></script>
 </body>
 </html>
