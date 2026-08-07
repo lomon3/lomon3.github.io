@@ -9,12 +9,12 @@ const langButtons = [...document.querySelectorAll("[data-set-lang]")];
 
 const metadata = {
   ru: {
-    title: "Артём Чернушевич — Product Leader · AI × e-commerce",
-    description: "Создатель CyberSeller, DataLab, ShoeLab и CTR Lab — продуктов, которые исследуют спрос, создают товар, проверяют гипотезы и автоматизируют продажи на маркетплейсах."
+    title: "Артём Чернушевич — AI Transformation & Product Leader",
+    description: "Руководитель AI-трансформации: вывожу LLM, агентные системы и AI-продукты из прототипа в production-процессы многомиллиардного e-commerce."
   },
   en: {
-    title: "Artyom Chernushevich — Product Leader · AI × e-commerce",
-    description: "Creator of CyberSeller, DataLab, ShoeLab and CTR Lab — products that research demand, create products, validate hypotheses and automate marketplace sales."
+    title: "Artyom Chernushevich — AI Transformation & Product Leader",
+    description: "AI transformation leader taking LLMs, agentic systems and AI products from prototype into production workflows inside a multi-billion e-commerce business."
   }
 };
 
