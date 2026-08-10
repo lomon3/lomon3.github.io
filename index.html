@@ -31,6 +31,23 @@
     "sameAs": ["https://t.me/ArChernushevich", "https://by.linkedin.com/in/artyom-chernushevich-39215917b"]
   }
   </script>
+  <!--
+    Счётчик посещений (GoatCounter): без cookie и персональных данных.
+    Настройка: зарегистрировать сайт на goatcounter.com и вписать свой код в SITE_CODE.
+    Свои заходы не считать: в консоли браузера — localStorage.setItem('skipgc', 't')
+  -->
+  <script>
+    (function () {
+      var SITE_CODE = 'YOURCODE';
+      if (SITE_CODE === 'YOURCODE') return;
+      try { if (localStorage.getItem('skipgc') === 't') return; } catch (e) {}
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = '//gc.zgo.at/count.js';
+      s.setAttribute('data-goatcounter', 'https://' + SITE_CODE + '.goatcounter.com/count');
+      document.head.appendChild(s);
+    })();
+  </script>
 </head>
 <body data-theme="dark" data-lang="ru">
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
