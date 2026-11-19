@@ -9,12 +9,12 @@ const langButtons = [...document.querySelectorAll("[data-set-lang]")];
 
 const metadata = {
   ru: {
-    title: "Артём Чернушевич — AI Transformation & Product Leader",
-    description: "Руководитель AI-трансформации: вывожу LLM, агентные системы и AI-продукты из прототипа в production-процессы многомиллиардного e-commerce."
+    title: "Артём Чернушевич — продакт‑лидер в e‑commerce",
+    description: "Продакт‑лидер в e‑commerce: нахожу, где бизнес теряет деньги и время, делаю продукт, который это закрывает, и довожу до цифры в отчёте."
   },
   en: {
-    title: "Artyom Chernushevich — AI Transformation & Product Leader",
-    description: "AI transformation leader taking LLMs, agentic systems and AI products from prototype into production workflows inside a multi-billion e-commerce business."
+    title: "Artyom Chernushevich — product leader in e‑commerce",
+    description: "Product leader in e‑commerce: I find where a business loses money and time, build the product that fixes it and push it to a number in the report."
   }
 };
 
