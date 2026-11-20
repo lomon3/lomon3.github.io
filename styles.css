@@ -1147,12 +1147,6 @@ body[data-lang="en"] .lang-en {
   font-size: 10px;
 }
 
-.profile-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
-  margin-top: 70px;
-}
 
 .profile-card {
   padding: 34px;
@@ -1527,9 +1521,6 @@ body[data-lang="en"] .lang-en {
     gap: 38px;
   }
 
-  .profile-grid {
-    grid-template-columns: 1fr;
-  }
 
   .credentials {
     grid-template-columns: 1fr;
@@ -1964,6 +1955,143 @@ body[data-lang="en"] .lang-en {
   }
 }
 
+/* How I work: method steps + Claude setup */
+.method {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.method-step {
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.method-step h3 {
+  margin: 14px 0 10px;
+  font-size: 21px;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+}
+
+.method-step p {
+  margin: 0 0 18px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.method-step strong {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  color: var(--acid);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.claude-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.85fr);
+  margin-top: 14px;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--acid) 40%, var(--line));
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 0% 0%, color-mix(in srgb, var(--acid) 7%, transparent), transparent 24rem),
+    var(--surface);
+}
+
+.claude-setup {
+  padding: 32px;
+}
+
+.claude-setup h3 {
+  max-width: 620px;
+  margin: 14px 0 0;
+  font-size: clamp(24px, 2.4vw, 32px);
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+}
+
+.claude-effect {
+  display: grid;
+  align-content: start;
+  gap: 22px;
+  padding: 32px;
+  border-left: 1px solid var(--line);
+  background: color-mix(in srgb, var(--acid) 5%, transparent);
+}
+
+.claude-effect > div {
+  display: grid;
+  gap: 4px;
+}
+
+.claude-effect strong {
+  color: var(--acid);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: clamp(26px, 2.6vw, 36px);
+  font-weight: 500;
+  letter-spacing: -0.05em;
+  line-height: 1.1;
+}
+
+.claude-effect span:not(.section-kicker) {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.toolkit-card {
+  margin-top: 60px;
+}
+
+.toolkit-card .toolkit {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 40px;
+}
+
+@media (max-width: 1100px) {
+  .method {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 840px) {
+  .claude-card {
+    grid-template-columns: 1fr;
+  }
+
+  .claude-effect {
+    border-top: 1px solid var(--line);
+    border-left: 0;
+  }
+
+  .toolkit-card .toolkit {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .method {
+    grid-template-columns: 1fr;
+  }
+
+  .method-step,
+  .claude-setup,
+  .claude-effect {
+    padding: 22px;
+  }
+
+  .toolkit-card {
+    padding-inline: 0;
+  }
+}
+
 .print-only {
   display: none;
 }
@@ -2333,11 +2461,6 @@ body[data-lang="en"] .lang-en {
     margin-top: 1mm;
   }
 
-  .profile-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 3mm;
-    margin-top: 5mm;
-  }
 
   .profile-card {
     padding: 4mm;
@@ -2474,6 +2597,77 @@ body[data-lang="en"] .lang-en {
   #approach .section-intro {
     margin-bottom: 4mm;
   }
+
+  .method {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 3mm;
+  }
+
+  .method-step {
+    padding: 4mm;
+    break-inside: avoid;
+    border-radius: 4mm;
+  }
+
+  .method-step h3 {
+    margin: 2mm 0 1.5mm;
+    font-size: 9pt;
+  }
+
+  .method-step p {
+    margin-bottom: 2.5mm;
+    font-size: 6.8pt;
+    line-height: 1.4;
+  }
+
+  .method-step strong {
+    padding-top: 2mm;
+    font-size: 6.8pt;
+  }
+
+  .claude-card {
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 0.85fr);
+    margin-top: 3mm;
+    break-inside: avoid;
+    border-radius: 4mm;
+  }
+
+  .claude-setup,
+  .claude-effect {
+    padding: 4mm;
+  }
+
+  .claude-effect {
+    gap: 3mm;
+    border-top: 0;
+    border-left: 1px solid var(--line);
+  }
+
+  .claude-setup h3 {
+    margin-top: 2mm;
+    font-size: 11pt;
+  }
+
+  .claude-effect strong {
+    font-size: 13pt;
+  }
+
+  .claude-effect span:not(.section-kicker) {
+    font-size: 6.8pt;
+    line-height: 1.35;
+  }
+
+  .toolkit-card {
+    margin-top: 4mm;
+    padding: 4mm;
+    break-inside: avoid;
+  }
+
+  .toolkit-card .toolkit {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 6mm;
+  }
+
 
   .toolkit {
     gap: 2mm;
